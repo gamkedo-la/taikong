@@ -7,12 +7,21 @@ using UnityEngine;
 // https://www.youtube.com/watch?v=JVbr7osMYTo
 public class PlayerController : MonoBehaviour {
     public float movementSpeed;
+    private float NORMAL_SPEED = 20;
+    private float BOOST_SPEED = 30;
+
+    private Vector3 BOOST_CAM = new Vector3(0, 0, -15);
+    private Vector3 NORMAL_CAM = new Vector3(0, 0, -10);
+
     private Transform shipModel;
     private Transform playerCamera;
+    
+
+    public bool isBoosting = false;
 
     void Start() {
-        shipModel = this.transform.GetChild(0);
-        playerCamera = this.transform.GetChild(1);
+        shipModel = this.transform.Find("Ship");
+        playerCamera = this.transform.Find("Camera");
     }
 
     void Update() {
@@ -35,8 +44,17 @@ public class PlayerController : MonoBehaviour {
             x = 1;
         }
 
+        if (Input.GetKeyDown("space")) {
+            isBoosting = true;
+        }
+
+        if (Input.GetKeyUp("space")) {
+            isBoosting = false;
+        }
+
         LocalMove(x, y, movementSpeed);
-        ClampPosition();
+        ClampPlayerPosition();
+        UpdateCameraPosition();
     }
 
     void LocalMove(float x, float y, float speed) {
@@ -47,11 +65,26 @@ public class PlayerController : MonoBehaviour {
         // this.transform.localPosition += new Vector3(0, 0, speed / 6) * speed * Time.deltaTime;
     }
 
-    void ClampPosition() {
+    void ClampPlayerPosition() {
         // Don't allow the player to move beyond the limits of the camera
         Vector3 pos = shipModel.localPosition;
         pos.x = Mathf.Clamp(pos.x, -9.0f, 9.0f);
         pos.y = Mathf.Clamp(pos.y, -5.0f, 5.0f);
         shipModel.localPosition = pos;
+    }
+
+    void UpdateCameraPosition() {
+	    Vector3 currentPos = playerCamera.localPosition;
+	    float cameraPosDifference = NORMAL_CAM.z - BOOST_CAM.z;
+	    
+        if (isBoosting) {
+	        currentPos = BOOST_CAM;
+            this.GetComponent<Cinemachine.CinemachineDollyCart>().m_Speed = BOOST_SPEED;
+        } else {
+	        currentPos = NORMAL_CAM;
+            this.GetComponent<Cinemachine.CinemachineDollyCart>().m_Speed = NORMAL_SPEED;            
+        }
+
+        playerCamera.localPosition = currentPos;
     }
 }
