@@ -6,7 +6,6 @@ using UnityEngine;
 // Player controller design influenced by Mix and Jam
 // https://www.youtube.com/watch?v=JVbr7osMYTo
 public class PlayerController : MonoBehaviour {
-    public float movementSpeed;
     private float NORMAL_SPEED = 20;
     private float BOOST_SPEED = 30;
 
@@ -16,7 +15,8 @@ public class PlayerController : MonoBehaviour {
     private Transform shipModel;
     private Transform playerCamera;
     
-
+    public GameObject laserPrefab;
+    public float movementSpeed;
     public bool isBoosting = false;
 
     void Start() {
@@ -25,6 +25,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
+        RegisterInputs();
+        ClampPlayerPosition();
+        UpdateCameraPosition();
+    }
+
+    void RegisterInputs() {
         float x = 0;
         float y = 0;
 
@@ -44,17 +50,19 @@ public class PlayerController : MonoBehaviour {
             x = 1;
         }
 
-        if (Input.GetKeyDown("space")) {
+        if (Input.GetKeyDown("left shift")) {
             isBoosting = true;
         }
 
-        if (Input.GetKeyUp("space")) {
+        if (Input.GetKeyUp("left shift")) {
             isBoosting = false;
         }
 
+        if (Input.GetKeyDown("space")) {
+            FireLasers();
+        }
+
         LocalMove(x, y, movementSpeed);
-        ClampPlayerPosition();
-        UpdateCameraPosition();
     }
 
     void LocalMove(float x, float y, float speed) {
@@ -86,5 +94,9 @@ public class PlayerController : MonoBehaviour {
         }
 
         playerCamera.localPosition = currentPos;
+    }
+
+    void FireLasers() {
+        GameObject laserShot = Instantiate(laserPrefab, shipModel.position, this.transform.rotation);
     }
 }
