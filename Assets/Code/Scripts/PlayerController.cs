@@ -8,10 +8,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     public float movementSpeed;
     private Transform shipModel;
+    private Transform playerCamera;
 
-    void Start() 
-    {
+    void Start() {
         shipModel = this.transform.GetChild(0);
+        playerCamera = this.transform.GetChild(1);
     }
 
     void Update() {
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour {
         shipModel.localPosition += new Vector3(x, y, 0) * speed * Time.deltaTime;
         
         // Move ship forward in space
-        this.transform.localPosition += new Vector3(0, 0, speed / 6) * speed * Time.deltaTime;
+        // this.transform.localPosition += new Vector3(0, 0, speed / 6) * speed * Time.deltaTime;
     }
 
     void ClampPosition() {
