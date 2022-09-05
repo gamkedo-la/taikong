@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Lasers : MonoBehaviour
 {
-    public float laserSpeed = 50;
+    public float laserSpeed = 100;
     public float timeToLive = 5f;
 
     void Start() {
