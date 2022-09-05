@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour {
         float x = 0;
         float y = 0;
 
+        // WASD keyboard input for movement
         if (Input.GetKey("w")) {
             y = 1;
         }
@@ -49,6 +50,10 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey("d")) {
             x = 1;
         }
+
+        // Simple console controller input
+        x = Input.GetAxis("Horizontal");
+        y = Input.GetAxis("Vertical");
 
         if (Input.GetKeyDown("left shift")) {
             isBoosting = true;
