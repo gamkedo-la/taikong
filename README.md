@@ -6,4 +6,4 @@
 
 ## Contributing
 
-- Trello link: **coming soon**
+- Trello link: https://trello.com/b/1TmIsx43/taikong
