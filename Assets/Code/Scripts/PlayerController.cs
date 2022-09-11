@@ -135,6 +135,14 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FireLasers() {
-        GameObject laserShot = Instantiate(laserPrefab, shipModel.transform.position, Quaternion.LookRotation(crosshairWorldPos));
+        // Laser first attempt 3 - Raycast from player ship's position
+        RaycastHit hit;
+        if (Physics.Raycast(shipModel.transform.position, shipModel.transform.TransformDirection(Vector3.forward), out hit)) {
+            GameObject laserShot = Instantiate(
+                laserPrefab, shipModel.transform.position, 
+                Quaternion.LookRotation(hit.point - shipModel.transform.position));
+        }
+
+        
     }
 }
