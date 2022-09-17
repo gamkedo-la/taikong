@@ -7,20 +7,26 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform target;
     [SerializeField] Transform shootPoint;
+    [SerializeField] float startFireRate = 1f;
 
     private bool playerInRange;
+    private float fireRate;
 
-    float fireRate = 0.2f;
     // Start is called before the first frame update
     void Start()
     {
         playerInRange = false;
+        fireRate = startFireRate;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        fireRate -= Time.deltaTime;
+        if (playerInRange && fireRate <= 0)
+        {
+            Shoot();
+        }
     }
 
     //Player has entered the enemy's field of view
@@ -29,27 +35,22 @@ public class Enemy : MonoBehaviour
         if(other.tag == "Player")
         {
             playerInRange = true;
-            transform.LookAt(other.transform);
-            Shoot();
+            target = other.transform;
         }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        playerInRange = false;
+        if (other.tag == "Player")
+            playerInRange = false;
     }
 
     private void Shoot()
     {
-        while(playerInRange)
-        {
-            fireRate -= Time.deltaTime;
-
-            if(fireRate <= 0)
-            {
-                Instantiate(bullet, shootPoint.position, shootPoint.rotation);
-            }
-        }
-
+        Debug.Log("Shoot");
+        transform.LookAt(target.transform);
+        Instantiate(bullet, shootPoint.position, shootPoint.rotation);
+        fireRate = startFireRate;
     }
 }

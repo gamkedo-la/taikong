@@ -14,4 +14,9 @@ public class Lasers : MonoBehaviour
     void Update() {
         transform.position += transform.forward * laserSpeed * Time.deltaTime;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }

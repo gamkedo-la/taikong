@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour {
     private GameObject shipModel;
     private GameObject playerCamera;
     private GameObject crosshair;
+
+    //empty gameobjects to hold where we want the laser to fire from 
+    [SerializeField] GameObject leftLaser; 
+    [SerializeField] GameObject rightLaser;
+    private GameObject shootFrom;
     
     public GameObject laserPrefab;
     public float movementSpeed;
@@ -26,6 +31,7 @@ public class PlayerController : MonoBehaviour {
         shipModel = GameObject.Find("Ship");
         playerCamera = GameObject.Find("Camera");
         crosshair = GameObject.Find("Crosshair");
+        shootFrom = leftLaser;
     }
 
     void Update() {
@@ -136,10 +142,16 @@ public class PlayerController : MonoBehaviour {
 
     void FireLasers() {
         // Laser first attempt 3 - Raycast from player ship's position
+
+        //alternate between sides of shooting
+        if (shootFrom == leftLaser)
+            shootFrom = rightLaser;
+        else
+            shootFrom = leftLaser;
         RaycastHit hit;
         if (Physics.Raycast(shipModel.transform.position, shipModel.transform.TransformDirection(Vector3.forward), out hit)) {
             GameObject laserShot = Instantiate(
-                laserPrefab, shipModel.transform.position, 
+                laserPrefab, shootFrom.transform.position, 
                 Quaternion.LookRotation(hit.point - shipModel.transform.position));
         }
 

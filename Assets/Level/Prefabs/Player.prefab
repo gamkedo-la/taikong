@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7721905736558313880}
   - component: {fileID: 2841397317379535151}
   - component: {fileID: 7092065862165225746}
+  - component: {fileID: 6045207074992085199}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df277722ca0a0177ba43c2b90285b69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftLaser: {fileID: 5658893072254378388}
+  rightLaser: {fileID: 6580521924094723942}
   laserPrefab: {fileID: 6495078473849792400, guid: 2b97ab49e84d916ca9183d2349a9e594, type: 3}
   movementSpeed: 20
   isBoosting: 0
@@ -70,6 +73,18 @@ MonoBehaviour:
   m_PositionUnits: 1
   m_Speed: 20
   m_Position: 0
+--- !u!114 &6045207074992085199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640052435552074012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f6ac709c9cf894c8abc89b02ee254f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1089277043129316837
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,7 +273,7 @@ GameObject:
   - component: {fileID: 1577975278311576688}
   m_Layer: 0
   m_Name: Tailwing
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
