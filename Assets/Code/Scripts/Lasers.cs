@@ -8,7 +8,7 @@ public class Lasers : MonoBehaviour
     public float timeToLive = 5f;
 
     void Start() {
-        Destroy(gameObject, timeToLive);
+        Destroy(this, timeToLive);
     }
 
     void Update() {
@@ -17,6 +17,6 @@ public class Lasers : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        Destroy(this);
     }
 }

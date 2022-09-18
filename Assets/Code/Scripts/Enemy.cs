@@ -36,8 +36,8 @@ public class Enemy : MonoBehaviour
         {
             playerInRange = true;
             target = other.transform;
+            Debug.Log("Attacking player");
         }
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -48,9 +48,10 @@ public class Enemy : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Shoot");
-        transform.LookAt(target.transform);
-        Instantiate(bullet, shootPoint.position, shootPoint.rotation);
+        // Debug.Log("Shoot");
+        transform.parent.LookAt(target.transform);
+        GameObject newBullet = Instantiate(bullet, transform.parent.position, transform.parent.rotation);
         fireRate = startFireRate;
+        Destroy(newBullet, 5f);
     }
 }

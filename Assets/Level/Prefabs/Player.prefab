@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 2197530944223269425}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 291511946241877713}
   m_Layer: 0
   m_Name: MainBody
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
