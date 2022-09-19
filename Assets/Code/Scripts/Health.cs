@@ -5,12 +5,27 @@ using UnityEngine;
 //health script for all damageable object
 //tutorial video I used: https://www.youtube.com/watch?v=9i0UGVUKiaE&ab_channel=DaniKrossing
 
-public class Health
+public abstract class Health : MonoBehaviour, IDamageable
 {
-    int currentHealth;
-    int currentMaxHealth;
+    [SerializeField] float currentMaxHealth;
+    private float currentHealth;
 
-    public int HealthFacts
+    private void Start()
+    {
+        currentHealth = currentMaxHealth;
+    }
+
+    private void OnEnable()
+    {
+        Lasers.OnDamaged += ChangeHealth;
+    }
+
+    private void OnDisable()
+    {
+        Lasers.OnDamaged -= ChangeHealth;
+    }
+
+    public float HealthFacts
     {
         get
         {
@@ -22,39 +37,30 @@ public class Health
         }
     }
 
-    public int MaxHealth
+    public float MaxHealth
     {
         get
         {
-            return currentHealth;
+            return currentMaxHealth;
         }
         set
         {
-            currentHealth = value;
+            currentMaxHealth = value;
         }
     }
 
-    public Health(int health, int maxHealth)
-    {
-        currentHealth = health;
-        currentMaxHealth = maxHealth;
-    }
-
-    public void TakeDamage(int damage)
+    public void ChangeHealth(float damage, GameObject unit)
     {
         if(currentHealth > 0)
         {
-            currentHealth -= damage;
-            currentHealth = Mathf.Clamp(currentHealth, 0, currentMaxHealth);
+            unit.GetComponent<Health>().currentHealth += damage;
+            unit.GetComponent<Health>().currentHealth = Mathf.Clamp(currentHealth, 0, currentMaxHealth);
+            Debug.Log("Current health of : " + unit.gameObject.name + " is " + unit.GetComponent<Health>().currentHealth);
         }
     }
 
-    public void Heal(int heal)
+    public Transform GetTransform()
     {
-        if (currentHealth > 0)
-        {
-            currentHealth += heal;
-            currentHealth = Mathf.Clamp(currentHealth, 0, currentMaxHealth);
-        }
+        return gameObject.transform;
     }
 }

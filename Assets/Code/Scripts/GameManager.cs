@@ -6,9 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager { get; private set; }
 
-
-    public Health playerHealth = new Health(100, 100);
-
     private void Awake()
     {
         if(gameManager != null && gameManager != this)
@@ -20,4 +17,5 @@ public class GameManager : MonoBehaviour
             gameManager = this;
         }
     }
+
 }

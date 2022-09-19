@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [RequireComponent(typeof(Collider))]
 public class AttackRadius : MonoBehaviour
 {
+    public static event Action<IDamageable> OnAttack;
+
     private List<IDamageable> Damageables = new List<IDamageable>();
     public int damage = 10;
     public float attackDelay = 0.5f;
     public delegate void AttackEvent(IDamageable Target);
-    public AttackEvent OnAttack;
     private Coroutine AttackCoroutine;
 
     private void OnTriggerEnter(Collider other)
@@ -64,7 +66,7 @@ public class AttackRadius : MonoBehaviour
             if(closestDamageable != null)
             {
                 OnAttack?.Invoke(closestDamageable);
-                closestDamageable.TakeDamage(damage);
+                closestDamageable.ChangeHealth((damage * -1), closestDamageable.GetTransform().gameObject);
             }
 
             closestDamageable = null;

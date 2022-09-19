@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Enemy : MonoBehaviour
 {
+    public static event Action<IDamageable> OnShoot;
+
     [SerializeField] GameObject bullet;
-    [SerializeField] Transform target;
+    [SerializeField] GameObject target;
     [SerializeField] Transform shootPoint;
     [SerializeField] float startFireRate = 1f;
 
@@ -25,17 +28,28 @@ public class Enemy : MonoBehaviour
         fireRate -= Time.deltaTime;
         if (playerInRange && fireRate <= 0)
         {
-            Shoot();
+            //Shoot();
         }
     }
+    private void OnEnable()
+    {
+        AttackRadius.OnAttack += Shoot;
+    }
 
+    private void OnDisable()
+    {
+        AttackRadius.OnAttack -= Shoot;
+    }
+
+
+    /*
     //Player has entered the enemy's field of view
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
             playerInRange = true;
-            target = other.transform;
+            target = other.gameObject;
             Debug.Log("Attacking player");
         }
     }
@@ -45,12 +59,14 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Player")
             playerInRange = false;
     }
+    */
 
-    private void Shoot()
+    private void Shoot(IDamageable damageable)
     {
-        // Debug.Log("Shoot");
-        transform.parent.LookAt(target.transform);
-        GameObject newBullet = Instantiate(bullet, transform.parent.position, transform.parent.rotation);
+        Debug.Log("Shoot");
+        transform.LookAt(damageable.GetTransform());
+        GameObject newBullet = Instantiate(bullet);//, transform.position, transform.rotation);
+        OnShoot?.Invoke(damageable);
         fireRate = startFireRate;
         Destroy(newBullet, 5f);
     }

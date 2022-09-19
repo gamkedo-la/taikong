@@ -2,41 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehaviour : MonoBehaviour, IDamageable
+public class PlayerBehaviour : Health
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+        //debugging
+        if (Input.GetKeyDown(KeyCode.Q))
         {
-            TakeDamage(20);
-            Debug.Log(GameManager.gameManager.playerHealth.HealthFacts);
+            ChangeHealth(-20, gameObject);
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Heal(20);
-            Debug.Log(GameManager.gameManager.playerHealth.HealthFacts);
+            ChangeHealth(20, gameObject);
         }
-    }
-
-    public Transform GetTransform()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void TakeDamage(int damage)
-    {
-        GameManager.gameManager.playerHealth.TakeDamage(damage);
-    }
-
-    public void Heal(int heal)
-    {
-        GameManager.gameManager.playerHealth.Heal(heal);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    void TakeDamage(int damage);
+    void ChangeHealth(float points, GameObject unit);
 
     Transform GetTransform();
 }
