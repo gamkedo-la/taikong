@@ -1,7 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // Player controller design influenced by Mix and Jam
 // https://www.youtube.com/watch?v=JVbr7osMYTo
@@ -98,6 +96,7 @@ public class PlayerController : MonoBehaviour {
     void ShipMove(float x, float y, float speed) {
         // manage player vertical and horizontal movement
         shipModel.transform.localPosition += new Vector3(x, y, 0) * speed * Time.deltaTime;
+
     }
 
     void ClampPlayerPosition() {
@@ -110,6 +109,24 @@ public class PlayerController : MonoBehaviour {
 
     void CrosshairMove(float x, float y, float speed) {
         crosshair.transform.localPosition += new Vector3(x, y, 0) * speed * Time.deltaTime;
+    }
+
+    void CrosshairColor() {
+        Color crosshair_red = new Color(0.7f, 0.1f, 0.1f, 0.8f);
+        Color crosshair_white = new Color(1f, 1f, 1f, 0.8f);
+        RaycastHit hit;
+        
+        if (Physics.Raycast(shipModel.transform.position, shipModel.transform.TransformDirection(Vector3.forward), out hit)) {
+            
+            if(hit.transform.gameObject.tag == "Enemy") {
+                crosshair.GetComponent<Graphic>().color = crosshair_red;
+            } else {
+                crosshair.GetComponent<Graphic>().color = crosshair_white;
+            }   
+            
+            Debug.DrawRay(shipModel.transform.position, hit.transform.position, Color.green);
+            
+        } 
     }
 
     void ClampCrosshairPosition() {
@@ -136,8 +153,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     void PointShipAtCrosshair() {
-        crosshairWorldPos = playerCamera.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(crosshair.transform.position.x, crosshair.transform.position.y, 1500f));
+        crosshairWorldPos = playerCamera.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(crosshair.transform.position.x, crosshair.transform.position.y, 500f));
         shipModel.transform.LookAt(crosshairWorldPos);
+
+        CrosshairColor();
     }
 
     void FireLasers() {
