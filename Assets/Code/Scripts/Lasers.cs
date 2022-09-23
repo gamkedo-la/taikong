@@ -8,20 +8,23 @@ public class Lasers : MonoBehaviour
     public static event Action<float, GameObject> OnDamaged;
 
     public float laserSpeed = 100;
-    public float timeToLive = 5f;
+    public float timeToLive = 2f;
     [SerializeField] float laserDamage = 1f;
-    public Rigidbody rb;
+    GameObject target;
 
     void Start() 
     {
         Destroy(gameObject, timeToLive);
-        rb = GetComponent<Rigidbody>();
     }
 
     void Update() 
     {
         transform.position += transform.forward * laserSpeed * Time.deltaTime;
-        
+        if(target != null)
+        {
+            transform.LookAt(target.transform.position);
+        }
+
     }
 
     private void OnEnable()
@@ -46,7 +49,11 @@ public class Lasers : MonoBehaviour
 
     private void Shoot(IDamageable damageable)
     {
-        GameObject target = damageable.GetTransform().gameObject;
+        if(gameObject.tag == "Enemy")
+            target = damageable.GetTransform().gameObject;
+        else
+            target = null;
+        /*
         Vector3 startPosition = transform.position;
         float time = 0;
 
@@ -57,6 +64,7 @@ public class Lasers : MonoBehaviour
 
             time += Time.deltaTime * laserSpeed;
         }
+        */
 
     }
 

@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: -4791972573703184767}
   - component: {fileID: -4301761890922340855}
   m_Layer: 0
-  m_Name: TempBulletDesign
-  m_TagString: Untagged
+  m_Name: TempENEMYBulletDesign
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,7 +115,6 @@ MonoBehaviour:
   laserSpeed: 100
   timeToLive: 2
   laserDamage: 10
-  rb: {fileID: 0}
 --- !u!54 &-4301761890922340855
 Rigidbody:
   m_ObjectHideFlags: 0

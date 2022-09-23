@@ -11,6 +11,7 @@ public class AttackRadius : MonoBehaviour
     private List<IDamageable> Damageables = new List<IDamageable>();
     public int damage = 10;
     public float attackDelay = 0.5f;
+    public float minDistance = 5f;
     public delegate void AttackEvent(IDamageable Target);
     private Coroutine AttackCoroutine;
 
@@ -60,10 +61,11 @@ public class AttackRadius : MonoBehaviour
                 {
                     closestDistance = distance;
                     closestDamageable = Damageables[i];
+                    Debug.Log("Distance of " + closestDamageable + " is " + closestDistance);
                 }
             }
 
-            if(closestDamageable != null)
+            if(closestDamageable != null && closestDistance <= minDistance)
             {
                 OnAttack?.Invoke(closestDamageable);
                 closestDamageable.ChangeHealth((damage * -1), closestDamageable.GetTransform().gameObject);

@@ -65,9 +65,9 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Shoot");
         transform.LookAt(damageable.GetTransform());
-        GameObject newBullet = Instantiate(bullet);//, transform.position, transform.rotation);
+        GameObject newBullet = Instantiate(bullet, transform.position, transform.rotation);
         OnShoot?.Invoke(damageable);
         fireRate = startFireRate;
-        Destroy(newBullet, 5f);
+        //Destroy(newBullet, 5f);
     }
 }
