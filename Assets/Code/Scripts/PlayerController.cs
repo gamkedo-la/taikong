@@ -102,8 +102,8 @@ public class PlayerController : MonoBehaviour {
     void ClampPlayerPosition() {
         // Don't allow the player to move beyond the limits of the camera
         Vector3 pos = shipModel.transform.localPosition;
-        pos.x = Mathf.Clamp(pos.x, -9.0f, 9.0f);
-        pos.y = Mathf.Clamp(pos.y, -5.0f, 5.0f);
+        pos.x = Mathf.Clamp(pos.x, -11.0f, 11.0f);
+        pos.y = Mathf.Clamp(pos.y, -8.5f, 8.0f);
         shipModel.transform.localPosition = pos;
     }
 
@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour {
         crosshairWorldPos = playerCamera.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(crosshair.transform.position.x, crosshair.transform.position.y, 500f));
         shipModel.transform.LookAt(crosshairWorldPos);
 
-        CrosshairColor();
+        // CrosshairColor();
     }
 
     void FireLasers() {
