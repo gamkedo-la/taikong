@@ -96,7 +96,6 @@ public class PlayerController : MonoBehaviour {
     void ShipMove(float x, float y, float speed) {
         // manage player vertical and horizontal movement
         shipModel.transform.localPosition += new Vector3(x, y, 0) * speed * Time.deltaTime;
-
     }
 
     void ClampPlayerPosition() {
