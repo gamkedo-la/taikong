@@ -244,19 +244,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7721905736558313880, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.998112
+      value: 0.9968678
       objectReference: {fileID: 0}
     - target: {fileID: 7721905736558313880, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.032140642
+      value: 0.059289813
       objectReference: {fileID: 0}
     - target: {fileID: 7721905736558313880, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.052312065
+      value: -0.05224686
       objectReference: {fileID: 0}
     - target: {fileID: 7721905736558313880, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0016845238
+      value: 0.0031074395
       objectReference: {fileID: 0}
     - target: {fileID: 7721905736558313880, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -808,17 +808,17 @@ MonoBehaviour:
     roll: 0
   - position: {x: 171.12975, y: -22.04034, z: 16.034555}
     roll: 0
-  - position: {x: 347.49872, y: -62.718475, z: -9.772473}
+  - position: {x: 347.49872, y: -30.043262, z: -9.772473}
     roll: 0
-  - position: {x: 824.83044, y: -45.530045, z: -63.745647}
+  - position: {x: 824.83044, y: -14.765903, z: -63.745647}
     roll: 0
-  - position: {x: 1141.2451, y: -34.141693, z: -117.71882}
+  - position: {x: 1141.2451, y: -32.794388, z: -117.71882}
     roll: 0
   - position: {x: 1293.0613, y: 34.798676, z: -1189.0269}
     roll: 0
   - position: {x: 1205.8817, y: 28.948196, z: -2260.335}
     roll: 0
-  - position: {x: 1049.855, y: -18.754105, z: -2881.1726}
+  - position: {x: 1049.855, y: -17.625652, z: -2881.1726}
     roll: 0
   - position: {x: 651.34283, y: 15.332199, z: -2952.881}
     roll: 0
