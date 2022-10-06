@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: -193627374652617002}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2133,6 +2133,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 54b3ea7626b8f1a529288279a882197a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 54b3ea7626b8f1a529288279a882197a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1161dbf61ed2ff1fd8f83c430dac34f8, type: 2}
@@ -2144,12 +2148,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: player-ship
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 54b3ea7626b8f1a529288279a882197a, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7800219917424603212, guid: 54b3ea7626b8f1a529288279a882197a, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54b3ea7626b8f1a529288279a882197a, type: 3}
+--- !u!1 &8130640733262855689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 54b3ea7626b8f1a529288279a882197a, type: 3}
+  m_PrefabInstance: {fileID: 8940981694609556312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &5635993814822164094
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8130640733262855689}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &1266570315834593791
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8130640733262855689}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 54b3ea7626b8f1a529288279a882197a, type: 3}
 --- !u!4 &8907563742884291763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 54b3ea7626b8f1a529288279a882197a, type: 3}
