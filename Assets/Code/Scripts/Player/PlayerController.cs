@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour {
         
         if (Physics.Raycast(shipModel.transform.position, shipModel.transform.TransformDirection(Vector3.forward), out hit)) {
             
-            if(hit.transform.gameObject.tag == "Enemy") {
+            if(hit.transform.gameObject.CompareTag("Enemy")) {
                 crosshair.GetComponent<Graphic>().color = crosshair_red;
             } else {
                 crosshair.GetComponent<Graphic>().color = crosshair_white;

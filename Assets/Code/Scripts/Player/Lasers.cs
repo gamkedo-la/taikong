@@ -49,7 +49,7 @@ public class Lasers : MonoBehaviour
 
     private void Shoot(IDamageable damageable)
     {
-        if(gameObject.tag == "Enemy")
+        if(gameObject.CompareTag("Enemy"))
             target = damageable.GetTransform().gameObject;
         else
             target = null;

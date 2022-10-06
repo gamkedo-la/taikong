@@ -17,7 +17,7 @@ public class EnemyDamage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Debug.Log("Hitbox trigger");
-        if(other.tag == "Laser")
+        if(other.CompareTag("Laser"))
         {
             health -= 25;
             Debug.Log("Enemy Hit: " + health.ToString());
