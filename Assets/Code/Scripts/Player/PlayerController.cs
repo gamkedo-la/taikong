@@ -110,24 +110,6 @@ public class PlayerController : MonoBehaviour {
         crosshair.transform.localPosition += new Vector3(x, y, 0) * speed * Time.deltaTime;
     }
 
-    void CrosshairColor() {
-        Color crosshair_red = new Color(0.7f, 0.1f, 0.1f, 0.8f);
-        Color crosshair_white = new Color(1f, 1f, 1f, 0.8f);
-        RaycastHit hit;
-        
-        if (Physics.Raycast(shipModel.transform.position, shipModel.transform.TransformDirection(Vector3.forward), out hit)) {
-            
-            if(hit.transform.gameObject.CompareTag("Enemy")) {
-                crosshair.GetComponent<Graphic>().color = crosshair_red;
-            } else {
-                crosshair.GetComponent<Graphic>().color = crosshair_white;
-            }   
-            
-            Debug.DrawRay(shipModel.transform.position, hit.transform.position, Color.green);
-            
-        } 
-    }
-
     void ClampCrosshairPosition() {
         // Don't allow the crosshair to move beyond the limits of the camera
         Vector3 pos = crosshair.transform.localPosition;
@@ -154,8 +136,6 @@ public class PlayerController : MonoBehaviour {
     void PointShipAtCrosshair() {
         crosshairWorldPos = playerCamera.GetComponent<Camera>().ScreenToWorldPoint(new Vector3(crosshair.transform.position.x, crosshair.transform.position.y, 500f));
         shipModel.transform.LookAt(crosshairWorldPos);
-
-        // CrosshairColor();
     }
 
     void FireLasers() {
@@ -172,7 +152,5 @@ public class PlayerController : MonoBehaviour {
                 laserPrefab, shootFrom.transform.position, 
                 Quaternion.LookRotation(hit.point - shipModel.transform.position));
         }
-
-        
     }
 }
