@@ -63,6 +63,10 @@ public class PlayerController : MonoBehaviour {
             ship_x = 1;
         }
 
+        if (Input.GetButton("Pause")) {
+            Debug.Log("Pause game");
+        }
+
         // Simple console controller input
         ship_x = Input.GetAxis("Horizontal");
         ship_y = Input.GetAxis("Vertical");
