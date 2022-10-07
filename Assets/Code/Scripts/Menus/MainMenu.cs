@@ -17,6 +17,6 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void ViewCredits() {
-        // TODO link to credits scene
+        Debug.Log("Show credits page");
     }
 }
