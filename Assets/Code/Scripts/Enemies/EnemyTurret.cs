@@ -2,36 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTurret : MonoBehaviour
+public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
 {
     bool playerInRange = false;
     Transform weapon;
     Transform player;
-    List<Transform> turretFire;
 
     public Transform turretLaser;
     public float firingRate;
 
+    private void Start() {
+        weapon = this.gameObject.transform.GetChild(0).GetChild(0).transform;
+        InvokeRepeating("FireWeapon", 1.0f, firingRate);
+    }
+
     private void OnTriggerEnter(Collider other)
-    {   //Check for a match with the specific tag on any GameObject that collides with your GameObject
+    {   
         if(other.CompareTag("Player"))
         {
-            playerInRange = true;
-            player = other.transform;
+            LockOnPlayer(other.transform);
         }
     }
 
     private void OnTriggerExit(Collider other)
-    {   //Check for a match with the specific tag on any GameObject that collides with your GameObject
+    {   
         if(other.CompareTag("Player"))
         {
-            playerInRange = false;
+            IgnorePlayer();
         }
-    }
-
-    private void Start() {
-        weapon = this.gameObject.transform.GetChild(0).GetChild(0).transform;
-        InvokeRepeating("CreateLaser", 1.0f, firingRate);
     }
 
     private void Update() {
@@ -46,14 +44,33 @@ public class EnemyTurret : MonoBehaviour
         }
     }
 
-    private void CreateLaser() 
-    {   
+    public void LockOnPlayer(Transform p) 
+    {
+        playerInRange = true;
+        player = p;
+    }
+
+    public void IgnorePlayer() 
+    {
+        playerInRange = false;
+    }
+
+    public void FireWeapon() 
+    {
         Vector3 barrelOffset = new Vector3(0, 4.2f, 0);
+
         if (playerInRange) {
             Transform laser = Instantiate(turretLaser);
             // Get the position of the canon part of the turret model
             laser.transform.position = weapon.transform.position + barrelOffset;
             laser.transform.rotation = weapon.transform.rotation;
         }
+    }
+
+    public void DestroySelf() 
+    {
+        // TODO
+        // When enemy health gets to zero, trigger an explosion animation
+        // then remove the game object from the scene
     }
 }
