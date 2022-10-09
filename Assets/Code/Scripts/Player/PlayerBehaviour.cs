@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerBehaviour : Health
+public class PlayerBehaviour : MonoBehaviour
 {
 
     private GameObject healthTextbox;

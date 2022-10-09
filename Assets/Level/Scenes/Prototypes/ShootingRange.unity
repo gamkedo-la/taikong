@@ -1057,42 +1057,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3341238389616824010, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
-      propertyPath: m_ClearFlags
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3341238389616824010, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
-      propertyPath: field of view
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 3341238389616824010, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
-      propertyPath: m_FocalLength
-      value: 14.3010435
-      objectReference: {fileID: 0}
-    - target: {fileID: 3341238389616824010, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
-      propertyPath: far clip plane
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037075800946112011, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
-      propertyPath: m_Color.a
-      value: 0.78431374
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037075800946112011, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037075800946112011, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037075800946112011, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4037075800946112011, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7721905736558313880, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
       propertyPath: m_RootOrder
       value: 2
