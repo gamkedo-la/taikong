@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
 {
     bool playerInRange = false;
+    UnitHealth enemyHealth = new UnitHealth(50, 50);
     Transform weapon;
     Transform player;
 
@@ -17,16 +18,21 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {   
-        if(other.CompareTag("Player"))
+    {           
+        if(other.CompareTag("PlayerDetect"))
         {
             LockOnPlayer(other.transform);
+        }
+
+        // CapsuleCollider is used for enemy hurtboxes
+        if(other.CompareTag("Laser")) {
+            Debug.Log("Ouch!");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {   
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("PlayerDetect"))
         {
             IgnorePlayer();
         }

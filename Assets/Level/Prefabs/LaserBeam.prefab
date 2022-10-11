@@ -130,7 +130,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserSpeed: 100
   timeToLive: 2
-  laserDamage: 1
 --- !u!1 &6495078473849792400
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +141,7 @@ GameObject:
   - component: {fileID: 8096704640104750848}
   m_Layer: 0
   m_Name: LaserBeam
-  m_TagString: Player
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
