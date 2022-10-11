@@ -406,6 +406,8 @@ MonoBehaviour:
   isBoosting: 0
   crosshairWorldPos: {x: 0, y: 0, z: 0}
   crosshairSpeed: 1000
+  mouseCrosshairSpeed: 500
+  lockMouse: 1
 --- !u!114 &7092065862165225746
 MonoBehaviour:
   m_ObjectHideFlags: 0

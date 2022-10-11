@@ -24,12 +24,21 @@ public class PlayerController : MonoBehaviour {
     public bool isBoosting = false;
     public Vector3 crosshairWorldPos;
     public float crosshairSpeed;
+    public float mouseCrosshairSpeed = 1000f;
+    public bool lockMouse = true;
+
+    Vector3 mouseDelta;
+    Vector3 lastMousePosition;
+
 
     void Start() {
         shipModel = GameObject.Find("Ship");
         playerCamera = GameObject.Find("Camera");
         crosshair = GameObject.Find("Crosshair");
         shootFrom = leftLaser;
+        mouseDelta = Vector3.zero;
+
+        SetCursorState();
     }
 
     void Update() {
@@ -45,6 +54,10 @@ public class PlayerController : MonoBehaviour {
         float ship_y = 0;
         float cross_x = 0;
         float cross_y = 0;
+
+        // Record mouse movement delta
+        mouseDelta = (Input.mousePosition - lastMousePosition);
+        lastMousePosition = Input.mousePosition;
 
         // WASD keyboard input for movement
         if (Input.GetKey("w")) {
@@ -71,9 +84,19 @@ public class PlayerController : MonoBehaviour {
         ship_x = Input.GetAxis("Horizontal");
         ship_y = Input.GetAxis("Vertical");
 
-        // Crosshair movement with the right stick
-        cross_x = Input.GetAxis("HorizontalRIghtStick");
-        cross_y = Input.GetAxis("VerticalRightStick");
+        // Crosshair movement with the right stick or mouse position
+        var crossSpeed = crosshairSpeed;
+        if (mouseDelta.sqrMagnitude > 0)
+        {
+            cross_x = mouseDelta.x;
+            cross_y = mouseDelta.y;
+            crossSpeed = mouseCrosshairSpeed;
+        }
+        else
+        {
+            cross_x = Input.GetAxis("HorizontalRIghtStick");
+            cross_y = Input.GetAxis("VerticalRightStick");
+        }
 
         // if (Input.GetKeyDown("left shift")) {
         //     isBoosting = true;
@@ -94,7 +117,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         ShipMove(ship_x, ship_y, movementSpeed);
-        CrosshairMove(cross_x, cross_y, crosshairSpeed);
+        CrosshairMove(cross_x, cross_y, crossSpeed);
     }
 
     void ShipMove(float x, float y, float speed) {
@@ -156,5 +179,16 @@ public class PlayerController : MonoBehaviour {
                 laserPrefab, shootFrom.transform.position, 
                 Quaternion.LookRotation(hit.point - shipModel.transform.position));
         }
+    }
+
+    void SetCursorState()
+    {
+        Cursor.visible = !lockMouse;
+        Cursor.lockState = lockMouse ? CursorLockMode.Confined : CursorLockMode.None;
+    }
+
+    void OnValidate()
+    {
+        SetCursorState();
     }
 }
