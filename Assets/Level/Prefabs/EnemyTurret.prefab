@@ -300,6 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turretLaser: {fileID: 8096704640104750848, guid: 2b97ab49e84d916ca9183d2349a9e594, type: 3}
   firingRate: 2
+  scorePoints: 100
 --- !u!54 &933533956063783798
 Rigidbody:
   m_ObjectHideFlags: 0

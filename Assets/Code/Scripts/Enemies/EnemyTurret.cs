@@ -11,6 +11,7 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
 
     public Transform turretLaser;
     public float firingRate;
+    public int scorePoints;
 
     private void Start() {
         weapon = this.gameObject.transform.GetChild(0).GetChild(0).transform;
@@ -83,5 +84,8 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
         // When enemy health gets to zero, trigger an explosion animation
         // then remove the game object from the scene
         Destroy(gameObject);
+
+        // Add points to players score when enemy is destroyed
+        ScoreKeeper.instance.AddScore(scorePoints);
     }
 }
