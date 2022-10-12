@@ -1,0 +1,6 @@
+Label {
+    color: rgba(255, 255, 255, 255);
+    -unity-font-definition: none;
+    -unity-font: url('project://database/Assets/Fonts/american_captain/American%20Captain.otf?fileID=12800000&guid=d5258c7736a1cded49acb090aed154fd&type=3#American Captain');
+    font-size: 14px;
+}
