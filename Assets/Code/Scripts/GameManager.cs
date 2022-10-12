@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
 
     public UnitHealth _playerHealth = new UnitHealth(100, 100);
 
+    public enum ControlScheme { game_pad, mouse_keys};
+    public ControlScheme activeControlScheme;
+
     private void Awake()
     {
         if(gameManager != null && gameManager != this)
@@ -18,5 +21,9 @@ public class GameManager : MonoBehaviour
         {
             gameManager = this;
         }
+    }
+
+    private void Start() {
+        activeControlScheme = ControlScheme.game_pad;
     }
 }

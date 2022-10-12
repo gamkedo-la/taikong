@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
 {
     bool playerInRange = false;
-    UnitHealth enemyHealth = new UnitHealth(50, 50);
+    UnitHealth health = new UnitHealth(50, 50);
     Transform weapon;
     Transform player;
 
@@ -26,7 +26,7 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
 
         // CapsuleCollider is used for enemy hurtboxes
         if(other.CompareTag("Laser")) {
-            Debug.Log("Ouch!");
+            health.DamageUnit(5);
         }
     }
 
@@ -47,6 +47,10 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
         } else {
             Quaternion weaponLook = Quaternion.LookRotation(weapon.transform.position);
             weapon.rotation = Quaternion.Slerp(weapon.rotation, weaponLook, Time.deltaTime);
+        }
+
+        if (health.Health <= 0) {
+            DestroySelf();
         }
     }
 
@@ -78,5 +82,6 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
         // TODO
         // When enemy health gets to zero, trigger an explosion animation
         // then remove the game object from the scene
+        Destroy(gameObject);
     }
 }

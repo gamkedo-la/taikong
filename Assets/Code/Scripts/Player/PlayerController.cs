@@ -55,67 +55,79 @@ public class PlayerController : MonoBehaviour {
         float cross_x = 0;
         float cross_y = 0;
 
-        // Record mouse movement delta
-        mouseDelta = (Input.mousePosition - lastMousePosition);
-        lastMousePosition = Input.mousePosition;
-
-        // WASD keyboard input for movement
-        if (Input.GetKey("w")) {
-            ship_y = 1;
+        var crossSpeed = crosshairSpeed;
+        
+        // Debugging - switch to kb+m with "m"
+        if (Input.GetKey("m")) 
+        {
+            GameManager.gameManager.activeControlScheme = GameManager.ControlScheme.mouse_keys;
+        } 
+        
+        // Debugging - switch to pad with "n"
+        if (Input.GetKey("n"))
+        {
+            GameManager.gameManager.activeControlScheme = GameManager.ControlScheme.game_pad;
         }
 
-        if (Input.GetKey("a")) {
-            ship_x = -1;
-        }
 
-        if (Input.GetKey("s")) {
-            ship_y = -1;
-        }
+        if (GameManager.gameManager.activeControlScheme == GameManager.ControlScheme.game_pad) 
+        {
+            // Simple console controller input
+            ship_x = Input.GetAxis("Horizontal");
+            ship_y = Input.GetAxis("Vertical");
 
-        if (Input.GetKey("d")) {
-            ship_x = 1;
+            cross_x = Input.GetAxis("HorizontalRightStick");
+            cross_y = Input.GetAxis("VerticalRightStick");
+
+            isBoosting = Input.GetAxis("Boost") == 1;
+
+            if (Input.GetAxis("Fire1") == 1) {
+                FireLasers();
+            }
+        } 
+        else if (GameManager.gameManager.activeControlScheme == GameManager.ControlScheme.mouse_keys)
+        {
+            // WASD keyboard input for movement
+            if (Input.GetKey("w")) 
+            {
+                ship_y = 1;
+            }
+
+            if (Input.GetKey("a")) 
+            {
+                ship_x = -1;
+            }
+
+            if (Input.GetKey("s")) 
+            {
+                ship_y = -1;
+            }
+
+            if (Input.GetKey("d")) 
+            {
+                ship_x = 1;
+            }
+
+            mouseDelta = (Input.mousePosition - lastMousePosition);
+            lastMousePosition = Input.mousePosition;
+
+            if (mouseDelta.sqrMagnitude > 0)
+            {
+                cross_x = mouseDelta.x;
+                cross_y = mouseDelta.y;
+                crossSpeed = mouseCrosshairSpeed;
+            }
+
+            if (Input.GetKeyDown("space")) 
+            {
+                FireLasers();
+            }
         }
 
         if (Input.GetButton("Pause")) {
             Debug.Log("Pause game");
         }
-
-        // Simple console controller input
-        ship_x = Input.GetAxis("Horizontal");
-        ship_y = Input.GetAxis("Vertical");
-
-        // Crosshair movement with the right stick or mouse position
-        var crossSpeed = crosshairSpeed;
-        if (mouseDelta.sqrMagnitude > 0)
-        {
-            cross_x = mouseDelta.x;
-            cross_y = mouseDelta.y;
-            crossSpeed = mouseCrosshairSpeed;
-        }
-        else
-        {
-            cross_x = Input.GetAxis("HorizontalRIghtStick");
-            cross_y = Input.GetAxis("VerticalRightStick");
-        }
-
-        // if (Input.GetKeyDown("left shift")) {
-        //     isBoosting = true;
-        // }
-
-        // if (Input.GetKeyUp("left shift")) {
-        //     isBoosting = false;
-        // }
-
-        isBoosting = Input.GetAxis("Boost") == 1;
-
-        if (Input.GetKeyDown("space")) {
-            FireLasers();
-        }
-
-        if (Input.GetAxis("Fire1") == 1) {
-            FireLasers();
-        }
-
+   
         ShipMove(ship_x, ship_y, movementSpeed);
         CrosshairMove(cross_x, cross_y, crossSpeed);
     }
