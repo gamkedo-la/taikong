@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour {
                 crossSpeed = mouseCrosshairSpeed;
             }
 
-            if (Input.GetKeyDown("space")) 
+            if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0)) 
             {
                 FireLasers();
             }
