@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2210069377061706827}
   - component: {fileID: 7500782129908221371}
   - component: {fileID: 8456913092843650626}
-  - component: {fileID: -4791972573703184767}
   - component: {fileID: -4301761890922340855}
+  - component: {fileID: 5821407051792632294}
   m_Layer: 0
   m_Name: TempENEMYBulletDesign
   m_TagString: Enemy
@@ -100,21 +100,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-4791972573703184767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1517512727499791126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1900ebd85c710145ca44a2ba20a739cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  laserSpeed: 100
-  timeToLive: 2
-  laserDamage: 10
 --- !u!54 &-4301761890922340855
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,3 +116,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5821407051792632294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517512727499791126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9edc42efeb4e09b3d8055818425b9f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserSpeed: 100
+  timeToLive: 2

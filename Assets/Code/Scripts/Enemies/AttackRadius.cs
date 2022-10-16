@@ -61,7 +61,7 @@ public class AttackRadius : MonoBehaviour
                 {
                     closestDistance = distance;
                     closestDamageable = Damageables[i];
-                    Debug.Log("Distance of " + closestDamageable + " is " + closestDistance);
+                    //Debug.Log("Distance of " + closestDamageable + " is " + closestDistance);
                 }
             }
 
