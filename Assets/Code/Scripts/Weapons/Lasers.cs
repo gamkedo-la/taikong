@@ -6,12 +6,12 @@ using System;
 public class Lasers : MonoBehaviour
 {
     public float laserSpeed = 100;
-    public int timeToLive = 2;
+    public float timeToLive = 2f;
     public int laserDamage = 5;
 
     void Start() 
     {
-        Destroy(transform.gameObject, timeToLive);
+        Destroy(transform.parent.gameObject, timeToLive);
     }
 
     void Update() 
