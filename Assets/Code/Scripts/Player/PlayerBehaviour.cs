@@ -7,6 +7,8 @@ public class PlayerBehaviour : MonoBehaviour
 {
 
     [SerializeField] GameObject healthTextbox;
+    [SerializeField] AudioSource damageSound;
+    [SerializeField] AudioSource destroySound;
 
     void Start() 
     {
@@ -30,14 +32,16 @@ public class PlayerBehaviour : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     { 
         if (other.CompareTag("EnemyLaser")) {
-            Debug.Log("Player hit");
+            // Debug.Log("Player hit");
             DamagePlayer(other.GetComponent<Lasers>().laserDamage);
         }
     }
 
     private void DamagePlayer(int damage) 
     {
+        Debug.Log("Player hit for " + damage.ToString() + " damage");
         GameManager.gameManager.playerHealth.DamageUnit(damage);
+        damageSound.Play();
 
         if (GameManager.gameManager.playerHealth.Health < 0) {
             DestroyPlayer();
@@ -55,7 +59,8 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     private void DestroyPlayer() {
-
+        destroySound.Play();
+        Destroy(transform.parent.gameObject, 2f);
     }
 
     private void SetHealthTextValue()

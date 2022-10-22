@@ -9,6 +9,10 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
     [SerializeField] Transform weapon;
     Transform player;
 
+    [SerializeField] AudioSource fireWeaponSound;
+    [SerializeField] AudioSource damageSound;
+    [SerializeField] AudioSource destroyedSound;
+
     public Transform turretLaser;
     public float firingRate;
     public int scorePoints;
@@ -27,6 +31,7 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
 
         // CapsuleCollider is used for enemy hurtboxes
         if(other.CompareTag("PlayerLaser")) {
+            damageSound.Play();
             health.DamageUnit(other.GetComponent<Lasers>().laserDamage);
         }
     }
@@ -71,7 +76,7 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
         Vector3 barrelOffset = new Vector3(0, 4.2f, 0);
 
         if (playerInRange) {
-            GetComponent<AudioSource>().Play();
+            fireWeaponSound.Play();
             Transform laser = Instantiate(turretLaser);
             // Get the position of the canon part of the turret model
             laser.transform.position = weapon.transform.position + barrelOffset;
@@ -81,12 +86,14 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
 
     public void DestroySelf() 
     {
+        destroyedSound.Play();
+
+        // Add points to players score when enemy is destroyed
+        ScoreKeeper.instance.AddScore(scorePoints);
+
         // TODO
         // When enemy health gets to zero, trigger an explosion animation
         // then remove the game object from the scene
         Destroy(gameObject);
-
-        // Add points to players score when enemy is destroyed
-        ScoreKeeper.instance.AddScore(scorePoints);
     }
 }
