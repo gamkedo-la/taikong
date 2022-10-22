@@ -27,6 +27,11 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    { 
+        Debug.Log(gameObject.GetComponentInChildren<Collider>().name);
+    }
+
     private void DamagePlayer(int damage) 
     {
         GameManager.gameManager.playerHealth.DamageUnit(damage);

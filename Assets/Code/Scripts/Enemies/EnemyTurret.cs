@@ -22,11 +22,11 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
         if(other.CompareTag("PlayerDetect"))
         {
             LockOnPlayer(other.transform);
-            Debug.Log("Looking at object: " + other.transform.ToString());
+            // Debug.Log("Looking at object: " + other.transform.ToString());
         }
 
         // CapsuleCollider is used for enemy hurtboxes
-        if(other.CompareTag("Laser")) {
+        if(other.CompareTag("PlayerLaser")) {
             health.DamageUnit(other.GetComponent<Lasers>().laserDamage);
         }
     }

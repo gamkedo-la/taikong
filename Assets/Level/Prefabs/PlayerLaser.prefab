@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3063933286591756839}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Laser
+  m_TagString: PlayerLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,8 +141,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8096704640104750848}
   m_Layer: 0
-  m_Name: LaserBeam
-  m_TagString: Laser
+  m_Name: PlayerLaser
+  m_TagString: PlayerLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
