@@ -6,7 +6,7 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
 {
     bool playerInRange = false;
     UnitHealth health = new UnitHealth(50, 50);
-    Transform weapon;
+    [SerializeField] Transform weapon;
     Transform player;
 
     public Transform turretLaser;
@@ -14,7 +14,6 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
     public int scorePoints;
 
     private void Start() {
-        weapon = this.gameObject.transform.GetChild(0).GetChild(0).transform;
         InvokeRepeating("FireWeapon", 1.0f, firingRate);
     }
 
@@ -23,11 +22,12 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
         if(other.CompareTag("PlayerDetect"))
         {
             LockOnPlayer(other.transform);
+            Debug.Log("Looking at object: " + other.transform.ToString());
         }
 
         // CapsuleCollider is used for enemy hurtboxes
         if(other.CompareTag("Laser")) {
-            health.DamageUnit(5);
+            health.DamageUnit(other.GetComponent<Lasers>().laserDamage);
         }
     }
 

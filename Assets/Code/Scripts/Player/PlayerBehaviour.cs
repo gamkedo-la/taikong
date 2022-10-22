@@ -29,20 +29,20 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void DamagePlayer(int damage) 
     {
-        GameManager.gameManager._playerHealth.DamageUnit(damage);
-        Debug.Log(GameManager.gameManager._playerHealth.Health);
+        GameManager.gameManager.playerHealth.DamageUnit(damage);
+        Debug.Log(GameManager.gameManager.playerHealth.Health);
         SetHealthTextValue();
     }
 
     private void HealPlayer(int healing) 
     {
-        GameManager.gameManager._playerHealth.HealUnit(healing);
-        Debug.Log(GameManager.gameManager._playerHealth.Health);
+        GameManager.gameManager.playerHealth.HealUnit(healing);
+        Debug.Log(GameManager.gameManager.playerHealth.Health);
         SetHealthTextValue();
     }
 
     private void SetHealthTextValue()
     {
-        healthTextbox.GetComponent<UnityEngine.UI.Text>().text = GameManager.gameManager._playerHealth.Health.ToString();
+        healthTextbox.GetComponent<UnityEngine.UI.Text>().text = GameManager.gameManager.playerHealth.Health.ToString();
     }
 }

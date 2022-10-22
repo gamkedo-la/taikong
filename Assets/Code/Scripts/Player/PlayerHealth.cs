@@ -2,32 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : Health
+public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] GameObject healthTextbox;
 
     private void Start()
     {
-        currentHealth = currentMaxHealth;
         SetHealthTextValue();
     }
 
 
-    public override void ChangeHealth(float damage, GameObject unit)
+    public void ChangeHealth(int damage, GameObject unit)
     {
-        if (currentHealth > 0)
+        if (GameManager.gameManager.playerHealth.Health > 0)
         {
-            currentHealth += damage;
-            currentHealth = Mathf.Clamp(currentHealth, 0, currentMaxHealth);
+            GameManager.gameManager.playerHealth.Health += damage;
+            GameManager.gameManager.playerHealth.Health = Mathf.Clamp(
+                GameManager.gameManager.playerHealth.Health, 0, 
+                GameManager.gameManager.playerHealth.MaxHealth);
+
             SetHealthTextValue();
-            Debug.Log("Current health of : " + unit.gameObject.name + " is " + currentHealth);
+
+            Debug.Log("Current health of : " + unit.gameObject.name + " is " + GameManager.gameManager.playerHealth.Health);
         }
-
-
     }
     private void SetHealthTextValue()
     {
-        healthTextbox.GetComponent<UnityEngine.UI.Text>().text = currentHealth.ToString();
+        healthTextbox.GetComponent<UnityEngine.UI.Text>().text = GameManager.gameManager.playerHealth.Health.ToString();
     }
 
 }
