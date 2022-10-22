@@ -17,14 +17,14 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         //debugging
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            DamagePlayer(10);
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            HealPlayer(5);
-        }
+        // if (Input.GetKeyDown(KeyCode.Q))
+        // {
+        //     DamagePlayer(10);
+        // }
+        // if (Input.GetKeyDown(KeyCode.E))
+        // {
+        //     HealPlayer(5);
+        // }
     }
 
     private void OnTriggerEnter(Collider other)
