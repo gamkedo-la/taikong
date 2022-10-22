@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class PlayerBehaviour : MonoBehaviour
 {
 
-    private GameObject healthTextbox;
+    [SerializeField] GameObject healthTextbox;
 
     void Start() 
     {
-        healthTextbox = GameObject.Find("HealthValue");
+        
         SetHealthTextValue();
     }
 
@@ -29,14 +29,22 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     { 
-        Debug.Log(gameObject.GetComponentInChildren<Collider>().name);
+        if (other.CompareTag("EnemyLaser")) {
+            Debug.Log("Player hit");
+            DamagePlayer(other.GetComponent<Lasers>().laserDamage);
+        }
     }
 
     private void DamagePlayer(int damage) 
     {
         GameManager.gameManager.playerHealth.DamageUnit(damage);
-        Debug.Log(GameManager.gameManager.playerHealth.Health);
-        SetHealthTextValue();
+
+        if (GameManager.gameManager.playerHealth.Health < 0) {
+            DestroyPlayer();
+        } else {
+            SetHealthTextValue();
+        }
+        
     }
 
     private void HealPlayer(int healing) 
@@ -44,6 +52,10 @@ public class PlayerBehaviour : MonoBehaviour
         GameManager.gameManager.playerHealth.HealUnit(healing);
         Debug.Log(GameManager.gameManager.playerHealth.Health);
         SetHealthTextValue();
+    }
+
+    private void DestroyPlayer() {
+
     }
 
     private void SetHealthTextValue()

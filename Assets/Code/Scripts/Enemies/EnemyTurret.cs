@@ -71,6 +71,7 @@ public class EnemyTurret : MonoBehaviour, IEnemyBehaviour
         Vector3 barrelOffset = new Vector3(0, 4.2f, 0);
 
         if (playerInRange) {
+            GetComponent<AudioSource>().Play();
             Transform laser = Instantiate(turretLaser);
             // Get the position of the canon part of the turret model
             laser.transform.position = weapon.transform.position + barrelOffset;
