@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1013233585}
-  m_IndirectSpecularColor: {r: 0.075613655, g: 0.056026332, b: 0.08872547, a: 1}
+  m_IndirectSpecularColor: {r: 0.07561358, g: 0.056026265, b: 0.088725396, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -982,11 +982,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423520575}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &450452615 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 337461304828772927, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
-  m_PrefabInstance: {fileID: 316080336}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &524334954
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,25 +1728,6 @@ Transform:
   m_Father: {fileID: 138551565}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1181190851 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8130640733262855689, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
-  m_PrefabInstance: {fileID: 316080336}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1181190857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181190851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3eab6b1ad89244e48b653e3a758c3234, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentMaxHealth: 100
-  healthTextbox: {fileID: 450452615}
 --- !u!1 &1250652668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1962,9 +1938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f53253f99821996a8a0e45c542bdcc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
-  attackDelay: 0.5
-  minDistance: 100
 --- !u!1 &1308126388
 GameObject:
   m_ObjectHideFlags: 0
@@ -3245,10 +3218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95935d180be76bfee869814129a7cd5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1517512727499791126, guid: d0d9a41fdf5646c4393447c93fcebda9, type: 3}
-  target: {fileID: 1181190851}
-  shootPoint: {fileID: 5859965601366453289}
-  startFireRate: 1
 --- !u!114 &8925309978365726311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3261,4 +3230,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf9a96f1caad16e4bdf634db665017b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMaxHealth: 100

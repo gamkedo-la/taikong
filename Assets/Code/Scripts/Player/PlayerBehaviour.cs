@@ -10,9 +10,10 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] AudioSource damageSound;
     [SerializeField] AudioSource destroySound;
 
+    float shieldTransparency = 0f;
+
     void Start() 
     {
-        
         SetHealthTextValue();
     }
 
@@ -27,13 +28,19 @@ public class PlayerBehaviour : MonoBehaviour
         // {
         //     HealPlayer(5);
         // }
+        if (shieldTransparency > 0f) {
+            shieldTransparency -= 1f * Time.deltaTime;
+        }
+        
+        GetComponent<Renderer>().sharedMaterial.SetFloat("_Alpha", shieldTransparency);
     }
 
     private void OnTriggerEnter(Collider other)
     { 
         if (other.CompareTag("EnemyLaser")) {
-            // Debug.Log("Player hit");
+            shieldTransparency = 0.5f;
             DamagePlayer(other.GetComponent<Lasers>().laserDamage);
+            other.GetComponent<Lasers>().DestroySelf();
         }
     }
 

@@ -306,7 +306,7 @@ MonoBehaviour:
   damageSound: {fileID: -7763092308474263629}
   destroyedSound: {fileID: 1497021158549237325}
   turretLaser: {fileID: 8096704640104750848, guid: 473ab0937c8277b71aaaee4620c40bd4, type: 3}
-  firingRate: 2
+  firingRate: 0.75
   scorePoints: 100
 --- !u!54 &933533956063783798
 Rigidbody:
@@ -394,7 +394,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0

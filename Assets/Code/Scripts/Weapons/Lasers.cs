@@ -18,4 +18,9 @@ public class Lasers : MonoBehaviour
     {
         transform.position += transform.forward * laserSpeed * Time.deltaTime;
     }
+
+    // Remove safe from game with particle effect if the laser collides with another game object
+    public void DestroySelf() {
+        Destroy(transform.parent.gameObject, 0f);
+    }
 }
