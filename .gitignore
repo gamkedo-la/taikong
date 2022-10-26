@@ -79,3 +79,5 @@ Logs
 Assets/Plugins/FMOD/Cache/Editor/FMODStudioCache.asset
 *.kra~
 *.png~
+Assets/Plugins/MonKey Commander
+Assets/Plugins/MonKey Commander.meta
