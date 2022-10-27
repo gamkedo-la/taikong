@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        if (Input.GetButton("Pause")) {
+        if (Input.GetButton("Pause") || Input.GetKeyDown(KeyCode.Escape)) {
             Debug.Log("Pause game");
         }
    
