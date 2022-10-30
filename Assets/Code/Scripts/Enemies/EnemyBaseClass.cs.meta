@@ -3,7 +3,13 @@ guid: 0ef5c9ea9cb259dbc8057565277d160d
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fireWeaponSound: {instanceID: 0}
+  - damageSound: {instanceID: 0}
+  - destroyedSound: {instanceID: 0}
+  - weapon: {instanceID: 0}
+  - explosion: {fileID: 3316972640263737637, guid: eb987749b50bff18daae91aa3141cd94, type: 3}
+  - turretLaser: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

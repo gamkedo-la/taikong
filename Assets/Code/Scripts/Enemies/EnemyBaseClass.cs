@@ -7,11 +7,13 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
     [SerializeField] AudioSource fireWeaponSound;
     [SerializeField] AudioSource damageSound;
     [SerializeField] AudioSource destroyedSound;
+    [SerializeField] Transform weapon;
+    [SerializeField] GameObject explosion;
+    Transform player;
 
     bool playerInRange = false;
     UnitHealth health = new UnitHealth(50, 50);
-    [SerializeField] Transform weapon;
-    Transform player;
+
     public Transform turretLaser;
     public float firingRate;
     public int scorePoints;
@@ -90,9 +92,10 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
         // Add points to players score when enemy is destroyed
         ScoreKeeper.instance.AddScore(scorePoints);
 
-        // TODO
-        // When enemy health gets to zero, trigger an explosion animation
-        // then remove the game object from the scene
-        Destroy(gameObject);
+        GameObject deathExplosion = Instantiate(explosion);
+        deathExplosion.transform.position = transform.position;
+        deathExplosion.GetComponent<ParticleSystem>().Play();
+        Destroy(deathExplosion, 0.5f);
+        Destroy(gameObject, 0.7f);
     }
 }

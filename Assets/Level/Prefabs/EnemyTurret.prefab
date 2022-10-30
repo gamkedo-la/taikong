@@ -282,7 +282,7 @@ Transform:
   m_GameObject: {fileID: 7799659792529809818}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 702962906213981663}
@@ -305,6 +305,7 @@ MonoBehaviour:
   damageSound: {fileID: -7763092308474263629}
   destroyedSound: {fileID: 1497021158549237325}
   weapon: {fileID: 7677618338797279084}
+  explosion: {fileID: 3316972640263737637, guid: eb987749b50bff18daae91aa3141cd94, type: 3}
   turretLaser: {fileID: 8096704640104750848, guid: 473ab0937c8277b71aaaee4620c40bd4, type: 3}
   firingRate: 0.4
   scorePoints: 100
@@ -586,7 +587,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
