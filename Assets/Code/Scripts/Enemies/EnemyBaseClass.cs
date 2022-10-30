@@ -6,14 +6,16 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
 {
     [SerializeField] AudioSource fireWeaponSound;
     [SerializeField] AudioSource damageSound;
-    [SerializeField] AudioSource destroyedSound;
+    [SerializeField] AudioClip destroyedSound;
     [SerializeField] Transform weapon;
     [SerializeField] GameObject explosion;
     Transform player;
 
-    bool playerInRange = false;
+    // bool playerInRange = false;
     UnitHealth health = new UnitHealth(50, 50);
 
+    enum Status { Idle, Attacking, Dying }
+    Status currentStatus = Status.Idle;
     public Transform turretLaser;
     public float firingRate;
     public int scorePoints;
@@ -25,7 +27,7 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
     private void Update() {
         Vector3 rest = new Vector3(0,0,0);
 
-        if (playerInRange) {
+        if (currentStatus == Status.Attacking) {
             Quaternion weaponLook = Quaternion.LookRotation(player.transform.position - weapon.transform.position);
             weapon.rotation = Quaternion.Slerp(weapon.rotation, weaponLook, Time.deltaTime);
         } else {
@@ -33,7 +35,8 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
             weapon.rotation = Quaternion.Slerp(weapon.rotation, weaponLook, Time.deltaTime);
         }
 
-        if (health.Health <= 0) {
+        if (health.Health <= 0 && currentStatus != Status.Dying) {
+            currentStatus = Status.Dying;
             DestroySelf();
         }
     }
@@ -63,20 +66,22 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
 
     public void LockOnPlayer(Transform p) 
     {
-        playerInRange = true;
+        // playerInRange = true;
+        currentStatus = Status.Attacking;
         player = p;
     }
 
     public void IgnorePlayer() 
     {
-        playerInRange = false;
+        // playerInRange = false;
+        currentStatus = Status.Idle;
     }
 
     public void FireWeapon() 
     {
         Vector3 barrelOffset = new Vector3(0, 4.2f, 0);
 
-        if (playerInRange) {
+        if (currentStatus == Status.Attacking) {
             fireWeaponSound.Play();
             Transform laser = Instantiate(turretLaser);
             // Get the position of the canon part of the turret model
@@ -87,7 +92,7 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
 
     public void DestroySelf() 
     {
-        destroyedSound.Play();
+        AudioSource.PlayClipAtPoint(destroyedSound, gameObject.transform.position, 1.0f);
 
         // Add points to players score when enemy is destroyed
         ScoreKeeper.instance.AddScore(scorePoints);
@@ -95,7 +100,8 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
         GameObject deathExplosion = Instantiate(explosion);
         deathExplosion.transform.position = transform.position;
         deathExplosion.GetComponent<ParticleSystem>().Play();
+        gameObject.SetActive(false);
         Destroy(deathExplosion, 0.5f);
-        Destroy(gameObject, 0.7f);
+        Destroy(gameObject, 1f);
     }
 }
