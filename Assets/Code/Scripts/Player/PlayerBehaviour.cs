@@ -41,6 +41,7 @@ public class PlayerBehaviour : MonoBehaviour
             shieldTransparency = 0.5f;
             DamagePlayer(other.GetComponent<Lasers>().laserDamage);
             other.GetComponent<Lasers>().DestroySelf();
+            transform.GetChild(0).GetComponent<ParticleSystem>().Play();
         }
     }
 
