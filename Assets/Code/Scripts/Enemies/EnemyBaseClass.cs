@@ -92,8 +92,6 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
 
     public void DestroySelf() 
     {
-        AudioSource.PlayClipAtPoint(destroyedSound, gameObject.transform.position, 1.0f);
-
         // Add points to players score when enemy is destroyed
         ScoreKeeper.instance.AddScore(scorePoints);
 

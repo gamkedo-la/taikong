@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] GameObject leftLaser; 
     [SerializeField] GameObject rightLaser;
     private GameObject shootFrom;
+
+    [SerializeField] AudioSource shipEngine;
+    [SerializeField] AudioSource laserSfx;
     
     public GameObject laserPrefab;
     public float movementSpeed;
@@ -190,6 +193,7 @@ public class PlayerController : MonoBehaviour {
             GameObject laserShot = Instantiate(
                 laserPrefab, shootFrom.transform.position, 
                 Quaternion.LookRotation(hit.point - shipModel.transform.position));
+                laserSfx.Play();
         }
     }
 
