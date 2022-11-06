@@ -43,6 +43,11 @@ public class PlayerBehaviour : MonoBehaviour
             other.GetComponent<Lasers>().DestroySelf();
             transform.GetChild(0).GetComponent<ParticleSystem>().Play();
         }
+
+        if (other.CompareTag("ShieldPickup")) {
+            shieldTransparency = 1f;
+            HealPlayer(50);
+        }
     }
 
     private void DamagePlayer(int damage) 
