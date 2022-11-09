@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
 {
-    [SerializeField] AudioSource fireWeaponSound;
+    [SerializeField] protected AudioSource fireWeaponSound;
     [SerializeField] AudioSource damageSound;
     [SerializeField] AudioClip destroyedSound;
-    [SerializeField] Transform weapon;
+    [SerializeField] protected Transform weaponLocation;
     [SerializeField] GameObject explosion;
-    Transform player;
+    protected Transform player;
 
     // bool playerInRange = false;
-    UnitHealth health = new UnitHealth(50, 50);
+    protected UnitHealth health = new UnitHealth(50, 50);
 
-    enum Status { Idle, Attacking, Dying }
-    Status currentStatus = Status.Idle;
-    public Transform turretLaser;
+    protected enum Status { Idle, Attacking, Dying }
+    protected Status currentStatus = Status.Idle;
+    public Transform laserPrefab;
     public float firingRate;
     public int scorePoints;
 
@@ -28,11 +28,11 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
         Vector3 rest = new Vector3(0,0,0);
 
         if (currentStatus == Status.Attacking) {
-            Quaternion weaponLook = Quaternion.LookRotation(player.transform.position - weapon.transform.position);
-            weapon.rotation = Quaternion.Slerp(weapon.rotation, weaponLook, Time.deltaTime);
+            Quaternion weaponLook = Quaternion.LookRotation(player.transform.position - weaponLocation.transform.position);
+            weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
         } else {
-            Quaternion weaponLook = Quaternion.LookRotation(weapon.transform.position);
-            weapon.rotation = Quaternion.Slerp(weapon.rotation, weaponLook, Time.deltaTime);
+            Quaternion weaponLook = Quaternion.LookRotation(weaponLocation.transform.position);
+            weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
         }
 
         if (health.Health <= 0 && currentStatus != Status.Dying) {
@@ -79,14 +79,12 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
 
     public void FireWeapon() 
     {
-        Vector3 barrelOffset = new Vector3(0, 4.2f, 0);
-
         if (currentStatus == Status.Attacking) {
             fireWeaponSound.Play();
-            Transform laser = Instantiate(turretLaser);
+            Transform laser = Instantiate(laserPrefab);
             // Get the position of the canon part of the turret model
-            laser.transform.position = weapon.transform.position + barrelOffset;
-            laser.transform.rotation = weapon.transform.rotation;
+            laser.transform.position = weaponLocation.transform.position;
+            laser.transform.rotation = weaponLocation.transform.rotation;
         }
     }
 
