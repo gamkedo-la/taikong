@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start() {
-        activeControlScheme = ControlScheme.game_pad;
+        // Default to mouse and keys as pad is weird atm
+        activeControlScheme = ControlScheme.mouse_keys;
     }
 }
