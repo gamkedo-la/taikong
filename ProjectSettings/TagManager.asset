@@ -8,6 +8,8 @@ TagManager:
   - PlayerLaser
   - EnemyLaser
   - ShieldPickup
+  - Enemy
+  - Scenary
   layers:
   - Default
   - TransparentFX

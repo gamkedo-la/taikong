@@ -25,8 +25,6 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
     }
 
     private void Update() {
-        Vector3 rest = new Vector3(0,0,0);
-
         if (currentStatus == Status.Attacking) {
             Quaternion weaponLook = Quaternion.LookRotation(player.transform.position - weaponLocation.transform.position);
             weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
