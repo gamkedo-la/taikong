@@ -20,4 +20,5 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Level/Scenes/Prototypes/ProofOfConcept.unity
     guid: e43267837faabfc429260b69169d6270
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: bb37587dd133a744bbf9e2b62e02e663, type: 2}
