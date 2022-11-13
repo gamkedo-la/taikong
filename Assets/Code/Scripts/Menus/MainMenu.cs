@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void ViewCredits() {
-        Debug.Log("Show credits page");
+        SceneManager.LoadScene(4);
     }
 
     public void ViewSettings()
