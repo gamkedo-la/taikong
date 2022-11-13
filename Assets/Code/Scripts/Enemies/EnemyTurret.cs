@@ -8,7 +8,7 @@ public class EnemyTurret : EnemyBaseClass
     {
         Vector3 barrelOffset = new Vector3(0, 8.4f, 0);
 
-        if (currentStatus == Status.Attacking) {
+        if (player != null) {
             fireWeaponSound.Play();
             Transform laser = Instantiate(laserPrefab);
             // Get the position of the canon part of the turret model
