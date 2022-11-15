@@ -21,12 +21,32 @@ public class MainMenu : MonoBehaviour
         // TODO share high-score button
     }
 
+    public void OpenDebugMenu() {
+
+    }
+
     public void ViewCredits() {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(6);
     }
 
     public void ViewSettings()
     {
         SettingsUIDocument.gameObject.SetActive(true);
+    }
+
+    public void DebugLoadCity() {
+        SceneManager.LoadScene(1);
+    }
+
+    public void DebugLoadMountains() {
+        SceneManager.LoadScene(2);
+    }
+
+    public void DebugLoadSpace() {
+        SceneManager.LoadScene(3);
+    }
+
+    public void DebugLoadTutorial() {
+        SceneManager.LoadScene(4);
     }
 }
