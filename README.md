@@ -6,4 +6,5 @@
 
 ## Contributing
 
+- Playtesting form: https://forms.gle/oRBGHpQgeKr3bVaq7
 - Trello link: https://trello.com/b/1TmIsx43/taikong
