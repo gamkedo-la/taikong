@@ -30,4 +30,6 @@ EditorBuildSettings:
     path: Assets/Level/Scenes/Menus/DebugMenu.unity
     guid: a1af2ceb9b6a1b4499fdccb1259aa7a0
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: a472538ee5b501b48b98989422d16a52, type: 2}
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: ed2bc04f941eded4d8f30f3e81570788, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: bb37587dd133a744bbf9e2b62e02e663, type: 2}

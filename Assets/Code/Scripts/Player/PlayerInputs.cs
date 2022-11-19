@@ -59,8 +59,8 @@ public class PlayerInputs : MonoBehaviour
 
         // Don't allow the player to move beyond the limits of the camera
         Vector3 pos = shipModel.transform.localPosition;
-        pos.x = Mathf.Clamp(pos.x, -11.0f, 11.0f);
-        pos.y = Mathf.Clamp(pos.y, -8.5f, 8.0f);
+        pos.x = Mathf.Clamp(pos.x, -15.0f, 15.0f);
+        pos.y = Mathf.Clamp(pos.y, -10.5f, 10f);
         shipModel.transform.localPosition = pos;
     }
 
