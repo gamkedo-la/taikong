@@ -11,7 +11,7 @@ public class EnemyPursue : MonoBehaviour
     
     [Header("Enemy Details")]
     [SerializeField] GameObject enemyType;
-    [SerializeField] int enemyCount;
+    [SerializeField] Vector3[] startPositions;
     
     bool pursueActive = false;
     GameObject shipsContainer;
@@ -24,12 +24,11 @@ public class EnemyPursue : MonoBehaviour
         shipsContainer.SetActive(false);
         shipsContainer.transform.localPosition = new Vector3(0, startingHeight, 0);
 
-        for (int e = 0; e < enemyCount; e++ ) 
+        for (int e = 0; e < startPositions.Length; e++ ) 
         {
-            int random = Random.Range(-9, 9);
             GameObject spawnedEnemy = Instantiate(enemyType, shipsContainer.transform.position, shipsContainer.transform.rotation);
             spawnedEnemy.transform.parent = shipsContainer.transform;
-            spawnedEnemy.transform.localPosition = new Vector3(random, 0, 0);
+            spawnedEnemy.transform.localPosition = startPositions[e];
         }
     }
 

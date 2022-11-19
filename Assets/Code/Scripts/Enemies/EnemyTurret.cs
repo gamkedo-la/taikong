@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class EnemyTurret : EnemyBaseClass
 {  
+    private void Update() {
+        if (currentStatus == Status.Attacking) {
+            Quaternion weaponLook = Quaternion.LookRotation(player.transform.position - weaponLocation.transform.position);
+            weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
+        } else {
+            Quaternion weaponLook = Quaternion.LookRotation(weaponLocation.transform.position);
+            weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
+        }
+
+        if (health.Health <= 0 && currentStatus != Status.Dying) {
+            currentStatus = Status.Dying;
+            DestroySelf();
+        }
+    }
+    
     new public void FireWeapon() 
     {
         Vector3 barrelOffset = new Vector3(0, 8.4f, 0);

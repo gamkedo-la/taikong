@@ -26,8 +26,7 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
 
     private void Update() {
         if (currentStatus == Status.Attacking) {
-            Quaternion weaponLook = Quaternion.LookRotation(player.transform.position - weaponLocation.transform.position);
-            weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
+            transform.LookAt(player.transform.position);
         } else {
             Quaternion weaponLook = Quaternion.LookRotation(weaponLocation.transform.position);
             weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
@@ -82,7 +81,7 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
             Transform laser = Instantiate(laserPrefab);
             // Get the position of the canon part of the turret model
             laser.transform.position = weaponLocation.transform.position;
-            laser.transform.rotation = weaponLocation.transform.rotation;
+            laser.transform.LookAt(player);
         }
     }
 
@@ -94,8 +93,10 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
         GameObject deathExplosion = Instantiate(explosion);
         deathExplosion.transform.position = transform.position;
         deathExplosion.GetComponent<ParticleSystem>().Play();
-        gameObject.SetActive(false);
         Destroy(deathExplosion, 0.5f);
-        Destroy(gameObject, 1f);
+        transform.position = new Vector3(0, -200, 0);
+        damageSound.clip = destroyedSound;
+        damageSound.Play();
+        Destroy(gameObject, 3f);
     }
 }
