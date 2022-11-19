@@ -9,8 +9,9 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
     [SerializeField] AudioClip destroyedSound;
     [SerializeField] protected Transform weaponLocation;
     [SerializeField] GameObject explosion;
-    protected Transform player;
 
+    private bool scoreAwarded;
+    protected Transform player;
     // bool playerInRange = false;
     protected UnitHealth health = new UnitHealth(50, 50);
 
@@ -21,6 +22,7 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
     public int scorePoints;
 
     private void Start() {
+        scoreAwarded = false;
         InvokeRepeating("FireWeapon", 1.0f, firingRate);
     }
 
@@ -32,8 +34,7 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
             weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
         }
 
-        if (health.Health <= 0 && currentStatus != Status.Dying) {
-            currentStatus = Status.Dying;
+        if (currentStatus == Status.Dying) {
             DestroySelf();
         }
     }
@@ -50,6 +51,9 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
         if(other.CompareTag("PlayerLaser")) {
             damageSound.Play();
             health.DamageUnit(other.GetComponent<Lasers>().laserDamage);
+            if (health.Health <= 0) {
+                currentStatus = Status.Dying;
+            }
         }
     }
 
@@ -87,16 +91,20 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
 
     public void DestroySelf() 
     {
-        // Add points to players score when enemy is destroyed
-        ScoreKeeper.instance.AddScore(scorePoints);
+        if (!scoreAwarded) 
+        {
+            scoreAwarded = true;
+            // Add points to players score when enemy is destroyed
+            ScoreKeeper.instance.AddScore(scorePoints);
 
-        GameObject deathExplosion = Instantiate(explosion);
-        deathExplosion.transform.position = transform.position;
-        deathExplosion.GetComponent<ParticleSystem>().Play();
-        Destroy(deathExplosion, 0.5f);
-        transform.position = new Vector3(0, -200, 0);
-        damageSound.clip = destroyedSound;
-        damageSound.Play();
-        Destroy(gameObject, 3f);
+            GameObject deathExplosion = Instantiate(explosion);
+            deathExplosion.transform.position = transform.position;
+            deathExplosion.GetComponent<ParticleSystem>().Play();
+            Destroy(deathExplosion, 0.5f);
+            transform.position = new Vector3(0, -200, 0);
+            damageSound.clip = destroyedSound;
+            damageSound.Play();
+            Destroy(gameObject, 3f);
+        }
     }
 }

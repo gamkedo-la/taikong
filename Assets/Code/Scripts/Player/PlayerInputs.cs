@@ -32,8 +32,9 @@ public class PlayerInputs : MonoBehaviour
     private Transform crosshair;
     private Vector2 movementDirection;
     private Vector2 aimingDirection;
-    private Vector3 crosshairWorldPos;
-    private bool shipBoosting;
+
+    public bool shipBoosting;
+    public Vector3 crosshairWorldPos;
 
 
     void Start() {
@@ -109,13 +110,15 @@ public class PlayerInputs : MonoBehaviour
     
     public void OnFire(InputValue value)
     {
-        RaycastHit hit;
+        // RaycastHit hit;
         
-        if (Physics.Raycast(shipModel.position, shipModel.TransformDirection(Vector3.forward), out hit)) {
-            Instantiate(laserPrefab, laserL.position, Quaternion.LookRotation(hit.point - shipModel.transform.position));
-            Instantiate(laserPrefab, laserR.position, Quaternion.LookRotation(hit.point - shipModel.transform.position));
-            laserSfx.Play();
-        }
+        // if (Physics.Raycast(shipModel.position, shipModel.TransformDirection(Vector3.forward), out hit)) {
+            
+        // }
+
+        Instantiate(laserPrefab, laserL.position, shipModel.transform.rotation);
+        Instantiate(laserPrefab, laserR.position, shipModel.transform.rotation);
+        laserSfx.Play();
     }
 
     public void OnBoost(InputValue value)

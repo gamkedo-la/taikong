@@ -32,23 +32,39 @@ public class EnemyPursue : MonoBehaviour
         }
     }
 
-    void FixedUpdate() {
-        if (pursueActive && shipsContainer.transform.localPosition.y > 0) {
-            float currentHeight = shipsContainer.transform.localPosition.y;
-            float newHeight = Mathf.Lerp(currentHeight, 0, 0.5f * Time.deltaTime);
+    void FixedUpdate() 
+    {
+        float currentHeight = shipsContainer.transform.localPosition.y;
+
+        if (pursueActive && shipsContainer.transform.localPosition.y > 0) 
+        {
+            float newHeight = Mathf.Lerp(currentHeight, 0, 0.5f * Time.fixedDeltaTime);
             shipsContainer.transform.localPosition = new Vector3(0, newHeight, 0);
+            timeToLive -= Time.fixedDeltaTime * 5;
         } 
+        else
+        {
+            float newHeight = Mathf.Lerp(currentHeight, startingHeight, 0.75f * Time.fixedDeltaTime);
+            shipsContainer.transform.localPosition = new Vector3(0, newHeight, 0);
+        }
+
+        if (timeToLive <= 0)
+        {
+            pursueActive = false;
+            Destroy(gameObject, 5f);
+        }
     }
     
     private void OnTriggerEnter(Collider other)
     {           
         if(other.CompareTag("PlayerDetect"))
         {
+            Debug.Log("Player spotted");
             pursueActive = true;
             shipsContainer.SetActive(true);
             flightpath.m_Path = other.transform.root.GetComponent<Cinemachine.CinemachineDollyCart>().m_Path;
             flightpath.m_Speed = other.transform.root.GetComponent<Cinemachine.CinemachineDollyCart>().m_Speed;
-            flightpath.m_Position = other.transform.root.GetComponent<Cinemachine.CinemachineDollyCart>().m_Position + 10;
+            flightpath.m_Position = other.transform.root.GetComponent<Cinemachine.CinemachineDollyCart>().m_Position + 20;
         }
     }
 }

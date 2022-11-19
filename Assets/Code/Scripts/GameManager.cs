@@ -8,9 +8,6 @@ public class GameManager : MonoBehaviour
 
     public UnitHealth playerHealth = new UnitHealth(100, 100);
 
-    public enum ControlScheme { game_pad, mouse_keys};
-    public ControlScheme activeControlScheme;
-
     private void Awake()
     {
         if(gameManager != null && gameManager != this)
@@ -21,10 +18,5 @@ public class GameManager : MonoBehaviour
         {
             gameManager = this;
         }
-    }
-
-    private void Start() {
-        // Default to mouse and keys as pad is weird atm
-        activeControlScheme = ControlScheme.mouse_keys;
     }
 }
