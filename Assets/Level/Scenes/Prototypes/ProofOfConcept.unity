@@ -2382,6 +2382,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4699757239949609826, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: 130aa1f1-5527-41ee-91cf-01bfd5064124
+      objectReference: {fileID: 0}
+    - target: {fileID: 4699757239949609826, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6310937454876909360, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
       propertyPath: m_NotificationBehavior
       value: 2
@@ -2649,7 +2657,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &733840843
 GameObject:
@@ -3362,7 +3370,7 @@ Transform:
   - {fileID: 560514198}
   - {fileID: 442839552}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1022423301
 GameObject:
@@ -5983,6 +5991,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912632123}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1930386225
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 305647304907010385, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 305647304907010385, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 58.528
+      objectReference: {fileID: 0}
+    - target: {fileID: 305647304907010385, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.124
+      objectReference: {fileID: 0}
+    - target: {fileID: 305647304907010385, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.5306473
+      objectReference: {fileID: 0}
+    - target: {fileID: 305647304907010385, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305647304907010385, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305647304907010385, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 305647304907010385, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305647304907010385, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 305647304907010385, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 305647304907010385, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658031323781313439, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
+      propertyPath: m_Name
+      value: GunshipSquad
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c609c500795ae247adc12ba9ad4f75f, type: 3}
 --- !u!1 &2019976499
 GameObject:
   m_ObjectHideFlags: 0

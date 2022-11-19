@@ -2,7 +2,7 @@
     "name": "InputMaster",
     "maps": [
         {
-            "name": "PlayerMomvement",
+            "name": "PlayerMovement",
             "id": "130aa1f1-5527-41ee-91cf-01bfd5064124",
             "actions": [
                 {
