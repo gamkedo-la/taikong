@@ -27,15 +27,15 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
     }
 
     private void Update() {
-        if (currentStatus == Status.Attacking) {
-            transform.LookAt(player.transform.position);
-        } else {
-            Quaternion weaponLook = Quaternion.LookRotation(weaponLocation.transform.position);
-            weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
-        }
-
         if (currentStatus == Status.Dying) {
             DestroySelf();
+        } else {
+            if (currentStatus == Status.Attacking) {
+                transform.LookAt(player.transform.position);
+            } else {
+                Quaternion weaponLook = Quaternion.LookRotation(weaponLocation.transform.position);
+                weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
+            }
         }
     }
 
@@ -67,15 +67,17 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
 
     public void LockOnPlayer(Transform p) 
     {
-        // playerInRange = true;
-        currentStatus = Status.Attacking;
-        player = p;
+        if (currentStatus != Status.Dying) {
+            currentStatus = Status.Attacking;
+            player = p;
+        }
     }
 
     public void IgnorePlayer() 
     {
-        // playerInRange = false;
-        currentStatus = Status.Idle;
+        if (currentStatus != Status.Dying) {
+            currentStatus = Status.Idle;
+        }
     }
 
     public void FireWeapon() 

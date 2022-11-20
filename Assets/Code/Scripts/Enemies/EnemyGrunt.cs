@@ -18,19 +18,18 @@ public class EnemyGrunt : EnemyBaseClass
     private void Update() {
         Vector3 rest = new Vector3(0,0,0);
 
-        if (player != null) {
-            Quaternion weaponLook = Quaternion.LookRotation(player.transform.position - weaponLocation.transform.position);
-            weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
-        } else {
-            Quaternion weaponLook = Quaternion.LookRotation(weaponLocation.transform.position);
-            weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
-        }
-
-        transform.position = new Vector3(originalPos.x, originalPos.y + floatingAmplitude * Mathf.Sin(floatingSpeed * Time.time), originalPos.z);
-
-        if (health.Health <= 0 && currentStatus != Status.Dying) {
-            currentStatus = Status.Dying;
+        if (currentStatus == Status.Dying) {
+            Debug.Log("Grunt destroyed");
             DestroySelf();
+        } else {
+            if (player != null) {
+                Quaternion weaponLook = Quaternion.LookRotation(player.transform.position - weaponLocation.transform.position);
+                weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
+            } else {
+                Quaternion weaponLook = Quaternion.LookRotation(weaponLocation.transform.position);
+                weaponLocation.rotation = Quaternion.Slerp(weaponLocation.rotation, weaponLook, Time.deltaTime);
+            }
+            transform.position = new Vector3(originalPos.x, originalPos.y + floatingAmplitude * Mathf.Sin(floatingSpeed * Time.time), originalPos.z);
         }
     }
 
