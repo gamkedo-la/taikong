@@ -13,6 +13,7 @@ public class NextLevelMenu : MonoBehaviour
     }
 
     public void OnLevelComplete() {
+        Debug.Log("Next level please");
         // If the player is on level 1, 2 or 3, load the next level
         // Else, show the gameover level for their final score
         if (activeScene.buildIndex < 3) {

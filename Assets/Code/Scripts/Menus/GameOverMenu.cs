@@ -21,7 +21,7 @@ public class GameOverMenu : MonoBehaviour
     }
 
     public void OnShareScore() {
-        string shareText = "I got a high score of " + finalScore.ToString() + " on Taikong, think you can beat it? https://jazibobs.itch.io/taikong";
+        string shareText = "I got a high score of " + finalScore.ToString() + " on Taikong, think you can beat it? https://jazibobs.itch.io/taikong 🚀";
         GUIUtility.systemCopyBuffer = shareText;
         clipboardPrompt.SetActive(true);
     }
