@@ -31,6 +31,7 @@ public class ScoreKeeper : MonoBehaviour
 
     public void ResetScore() {
         scoreNow = 0;
+        PlayerPrefs.SetInt("playerscore", scoreNow);
         RedrawDisplay();
     }
 
