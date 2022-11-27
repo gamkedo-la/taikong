@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreKeeper : MonoBehaviour
 {
     public static ScoreKeeper instance; // singleton so anyone can add to score without each having a reference
-
+    private Scene activeScene;
     private int displayScoreDigits = 8;
 
     private Text scoreDisplay;
@@ -15,12 +16,17 @@ public class ScoreKeeper : MonoBehaviour
     private void Awake() {
         instance = this;
         scoreDisplay = GetComponent<Text>();
+        
     }
 
-    void Start()
-    {
-        ResetScore();
-
+    private void Start() {
+        activeScene = SceneManager.GetActiveScene();
+        if (activeScene.buildIndex == 0) {
+            ResetScore();
+        } else {
+            scoreNow = PlayerPrefs.GetInt("playerscore");
+            RedrawDisplay();
+        }
     }
 
     public void ResetScore() {
@@ -30,8 +36,12 @@ public class ScoreKeeper : MonoBehaviour
 
     public void AddScore(int extraPoints) {
         scoreNow += extraPoints;
-        // if there's a max score this would be where to enforce it
+        PlayerPrefs.SetInt("playerscore", scoreNow);
         RedrawDisplay();
+
+        if (scoreNow > PlayerPrefs.GetInt("highscore")) {
+            PlayerPrefs.SetInt("highscore", scoreNow);
+        }
     }
 
     void RedrawDisplay() {
