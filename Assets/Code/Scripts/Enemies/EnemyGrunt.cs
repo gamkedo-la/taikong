@@ -11,7 +11,7 @@ public class EnemyGrunt : EnemyBaseClass
     float weaponOffset = 3.7f;
     
     private void Start() {
-        InvokeRepeating("FireWeapon", 1.0f, firingRate);
+        InvokeRepeating("FireWeapon", 1.0f, firingRate * Random.Range(0.9f, 1.1f));
         originalPos = transform.position;
     }
 

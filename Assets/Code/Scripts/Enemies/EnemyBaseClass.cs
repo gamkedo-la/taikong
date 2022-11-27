@@ -24,7 +24,7 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
 
     private void Start() {
         scoreAwarded = false;
-        InvokeRepeating("FireWeapon", 1.0f, firingRate);
+        InvokeRepeating("FireWeapon", 1.0f, firingRate * Random.Range(0.9f, 1.1f));
     }
 
     private void Update() {

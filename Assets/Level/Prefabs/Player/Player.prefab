@@ -5545,13 +5545,14 @@ MonoBehaviour:
   aimSpeed: 750
   flightSpeedNormal: 20
   flightSpeedBoost: 30
+  shipBoosting: 0
   boostFuel: 100
   boostBurnRate: 10
+  boostTextBox: {fileID: 374404924582607459}
   normalCameraPosition: -15
   boostCameraPosition: -20
   cameraPanSpeed: 2
   pauseMenu: {fileID: 5348940764924945473}
-  shipBoosting: 0
   crosshairWorldPos: {x: 0, y: 0, z: 0}
 --- !u!1 &811567176300711613
 GameObject:

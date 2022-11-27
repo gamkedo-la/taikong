@@ -63,7 +63,7 @@ public class EnemyPursue : MonoBehaviour
             pursueActive = true;
             shipsContainer.SetActive(true);
             flightpath.m_Path = other.transform.root.GetComponent<Cinemachine.CinemachineDollyCart>().m_Path;
-            flightpath.m_Speed = other.transform.root.GetComponent<Cinemachine.CinemachineDollyCart>().m_Speed;
+            flightpath.m_Speed = other.transform.root.GetComponent<Cinemachine.CinemachineDollyCart>().m_Speed + 1;
             flightpath.m_Position = other.transform.root.GetComponent<Cinemachine.CinemachineDollyCart>().m_Position + 20;
         }
     }

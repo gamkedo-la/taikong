@@ -29,7 +29,7 @@ public class Lasers : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Scenary") || other.CompareTag("Enemy")) {
+        if (other.CompareTag("Scenary")) {
             DestroySelf();
         }
     }

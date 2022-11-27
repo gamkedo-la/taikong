@@ -17,8 +17,10 @@ public class PlayerInputs : MonoBehaviour
     [SerializeField] float aimSpeed;
     [SerializeField] float flightSpeedNormal;
     [SerializeField] float flightSpeedBoost;
+    [SerializeField] public bool shipBoosting;
     [SerializeField] float boostFuel;
     [SerializeField] float boostBurnRate;
+    [SerializeField] GameObject boostTextBox;
 
     [Header("Camera Positions")]
     [SerializeField] float normalCameraPosition;
@@ -29,7 +31,6 @@ public class PlayerInputs : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
 
     [Header("Player Information")]
-    public bool shipBoosting;
     public Vector3 crosshairWorldPos;
 
     private Transform shipModel;
@@ -39,9 +40,12 @@ public class PlayerInputs : MonoBehaviour
     private Transform crosshair;
     private Vector2 movementDirection;
     private Vector2 aimingDirection;
+    private float levelDistance;
 
 
     void Start() {
+        levelDistance = transform.root.GetComponent<Cinemachine.CinemachineDollyCart>().m_Path.PathLength;
+        Debug.Log(levelDistance);
         shipBoosting = false;
         shipModel = GameObject.Find("Ship").transform;
         shipCamera = GameObject.Find("Camera").GetComponent<Camera>();
@@ -53,6 +57,9 @@ public class PlayerInputs : MonoBehaviour
 
     void FixedUpdate() 
     {
+
+        boostTextBox.GetComponent<UnityEngine.UI.Text>().text = boostFuel.ToString();
+
         switch (GameManager.currentState) {
             case GameManager.GameState.playing:
                 pauseMenu.SetActive(false);
@@ -60,6 +67,25 @@ public class PlayerInputs : MonoBehaviour
                 CrosshairMovement();
                 PointShipAtCrosshair();
                 SetCameraPosition();
+
+                if (shipBoosting) {
+                    boostFuel -= boostBurnRate * Time.fixedDeltaTime;
+
+                    if (boostFuel < 0)
+                        boostFuel = 0;
+                    
+                    transform.root.GetComponent<Cinemachine.CinemachineDollyCart>().m_Speed = 30;
+                } else {
+                    transform.root.GetComponent<Cinemachine.CinemachineDollyCart>().m_Speed = 20;
+                }
+
+                if (transform.root.GetComponent<Cinemachine.CinemachineDollyCart>().m_Position == levelDistance) {
+                    GameManager.currentState = GameManager.GameState.levelend;
+                }
+                break;
+            
+            case GameManager.GameState.levelend:
+                Debug.Log("Show player score");
                 break;
         }
         
@@ -121,20 +147,28 @@ public class PlayerInputs : MonoBehaviour
     
     public void OnFire(InputValue value)
     {
-        Instantiate(laserPrefab, laserL.position, shipModel.transform.rotation);
-        Instantiate(laserPrefab, laserR.position, shipModel.transform.rotation);
-        laserSfx.Play();
+        switch(GameManager.currentState) {
+            case GameManager.GameState.playing:
+                Instantiate(laserPrefab, laserL.position, shipModel.transform.rotation);
+                Instantiate(laserPrefab, laserR.position, shipModel.transform.rotation);
+                laserSfx.Play();
+                break; 
+        }
     }
 
     public void OnBoost(InputValue value)
     {
-        if (!shipBoosting && boostFuel > 0)
-            shipBoosting = true;
+        switch(GameManager.currentState) {
+            case GameManager.GameState.playing:
+            if (!shipBoosting && boostFuel > 0)
+                shipBoosting = true;
+            break;
+        }
     }
 
     public void OnPause(InputValue value)
     {
-        Debug.Log("Pause button");
+        // Debug.Log("Pause button");
         switch(GameManager.currentState) {
             case GameManager.GameState.playing:
                 pauseMenu.SetActive(true);
