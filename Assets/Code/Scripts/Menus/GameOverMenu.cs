@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 
 public class GameOverMenu : MonoBehaviour
 {
@@ -15,7 +17,7 @@ public class GameOverMenu : MonoBehaviour
         scoreTextbox.GetComponent<Text>().text = finalScore.ToString();
     }
     public void OnMainMenu() {
-
+        SceneManager.LoadScene(0);
     }
 
     public void OnShareScore() {
