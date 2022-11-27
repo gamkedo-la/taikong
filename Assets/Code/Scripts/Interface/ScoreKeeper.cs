@@ -16,12 +16,12 @@ public class ScoreKeeper : MonoBehaviour
     private void Awake() {
         instance = this;
         scoreDisplay = GetComponent<Text>();
-        
     }
 
     private void Start() {
         activeScene = SceneManager.GetActiveScene();
-        if (activeScene.buildIndex == 0) {
+        Debug.Log(activeScene);
+        if (activeScene.buildIndex == 1) {
             ResetScore();
         } else {
             scoreNow = PlayerPrefs.GetInt("playerscore");
