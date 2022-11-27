@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class PlayerInputs : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class PlayerInputs : MonoBehaviour
     [Header("Pause Menu")]
     [SerializeField] GameObject pauseMenu;
 
+    [Header("Next Level Menu")]
+    [SerializeField] GameObject levelMenu;
+    [SerializeField] GameObject scoreWrapper;
+
     [Header("Player Information")]
     public Vector3 crosshairWorldPos;
 
@@ -41,6 +46,9 @@ public class PlayerInputs : MonoBehaviour
     private Vector2 movementDirection;
     private Vector2 aimingDirection;
     private float levelDistance;
+    private float levelMenuOpacity = 0;
+
+    
 
 
     void Start() {
@@ -57,7 +65,7 @@ public class PlayerInputs : MonoBehaviour
 
     void FixedUpdate() 
     {
-
+        Vector3 scorePosition = scoreWrapper.transform.position;
         boostTextBox.GetComponent<UnityEngine.UI.Text>().text = boostFuel.ToString();
 
         switch (GameManager.currentState) {
@@ -85,7 +93,24 @@ public class PlayerInputs : MonoBehaviour
                 break;
             
             case GameManager.GameState.levelend:
-                Debug.Log("Show player score");
+                Vector4 menuColour = levelMenu.transform.GetChild(0).GetComponent<RawImage>().color;
+                Vector4 levelLabelColour = levelMenu.transform.GetChild(1).GetComponent<Text>().color;
+                
+                levelMenuOpacity = Mathf.Lerp(levelMenuOpacity, 180, 0.005f * Time.fixedDeltaTime);
+                
+                levelMenu.transform.GetChild(0).GetComponent<RawImage>().color = new Vector4(
+                    menuColour.x, menuColour.y, menuColour.z, levelMenuOpacity);
+
+                levelMenu.transform.GetChild(1).GetComponent<Text>().color = new Vector4(
+                    levelLabelColour.x, levelLabelColour.y, levelLabelColour.z, levelMenuOpacity);
+
+                scorePosition = new Vector3(
+                    scorePosition.x, 
+                    Mathf.Lerp(scorePosition.y, 400, 0.75f * Time.fixedDeltaTime), 
+                    scorePosition.z);
+
+                scoreWrapper.transform.position = scorePosition;
+                levelMenu.SetActive(true);
                 break;
         }
         
@@ -137,12 +162,20 @@ public class PlayerInputs : MonoBehaviour
 
     public void OnMovement(InputValue value)
     {
-        movementDirection = value.Get<Vector2>();
+        switch(GameManager.currentState) {
+            case GameManager.GameState.playing:
+            movementDirection = value.Get<Vector2>();
+            break;
+        }
     }
 
     public void OnAim(InputValue value)
     {
-        aimingDirection = value.Get<Vector2>();
+        switch(GameManager.currentState) {
+            case GameManager.GameState.playing:
+            aimingDirection = value.Get<Vector2>();
+            break;
+        }
     }
     
     public void OnFire(InputValue value)

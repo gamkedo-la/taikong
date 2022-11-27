@@ -37,18 +37,23 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    { 
-        if (other.CompareTag("EnemyLaser")) {
-            shieldTransparency = 0.5f;
-            DamagePlayer(other.GetComponent<Lasers>().laserDamage);
-            other.GetComponent<Lasers>().DestroySelf();
-            transform.GetChild(0).GetComponent<ParticleSystem>().Play();
-        }
+    {
+        switch(GameManager.currentState) {
+            case GameManager.GameState.playing:
+                if (other.CompareTag("EnemyLaser")) {
+                    shieldTransparency = 0.5f;
+                    DamagePlayer(other.GetComponent<Lasers>().laserDamage);
+                    other.GetComponent<Lasers>().DestroySelf();
+                    transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+                }
 
-        if (other.CompareTag("ShieldPickup")) {
-            shieldTransparency = 1f;
-            HealPlayer(50);
-        }
+                if (other.CompareTag("ShieldPickup")) {
+                    shieldTransparency = 1f;
+                    HealPlayer(50);
+                }
+                break;
+        } 
+        
     }
 
     private void DamagePlayer(int damage) 

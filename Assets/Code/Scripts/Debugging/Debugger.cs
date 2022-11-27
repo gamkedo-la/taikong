@@ -22,6 +22,8 @@ public class Debugger : MonoBehaviour {
             GUI.Label(new Rect(10, 70, 500, 20), "Crosshair X: " + player.transform.GetChild(2).transform.GetChild(0).position.x);
             GUI.Label(new Rect(10, 85, 500, 20), "Crosshair Y: " + player.transform.GetChild(2).transform.GetChild(0).position.y);
             GUI.Label(new Rect(10, 100, 500, 20), "Crosshair Pos: " + player.GetComponent<PlayerInputs>().crosshairWorldPos);
+            GUI.Label(new Rect(10, 115, 500, 20), "Level Length: " + player.GetComponent<Cinemachine.CinemachineDollyCart>().m_Path.PathLength);
+            GUI.Label(new Rect(10, 130, 500, 20), "Player Position: " + player.GetComponent<Cinemachine.CinemachineDollyCart>().m_Position);
         }
     }
 }
