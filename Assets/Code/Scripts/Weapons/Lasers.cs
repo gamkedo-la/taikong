@@ -16,7 +16,11 @@ public class Lasers : MonoBehaviour
 
     void Update() 
     {
-        transform.position += transform.forward * laserSpeed * Time.deltaTime;
+        switch (GameManager.currentState) {
+            case GameManager.GameState.playing:
+                transform.position += transform.forward * laserSpeed * Time.deltaTime;
+                break;
+        }
     }
 
     // Remove laser from game with particle effect if the laser collides with another game object

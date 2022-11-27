@@ -9,30 +9,31 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] GameObject healthTextbox;
     [SerializeField] AudioSource damageSound;
     [SerializeField] AudioSource destroySound;
+    [SerializeField] GameObject deathExplosion;
 
     float shieldTransparency = 0f;
 
     void Start() 
     {
+        GameManager.currentState = GameManager.GameState.playing;
         SetHealthTextValue();
     }
 
     void Update()
     {
-        //debugging
-        // if (Input.GetKeyDown(KeyCode.Q))
-        // {
-        //     DamagePlayer(10);
-        // }
-        // if (Input.GetKeyDown(KeyCode.E))
-        // {
-        //     HealPlayer(5);
-        // }
-        if (shieldTransparency > 0f) {
-            shieldTransparency -= 1f * Time.deltaTime;
+        switch (GameManager.currentState) {
+            case GameManager.GameState.playing:
+                if (shieldTransparency > 0f) {
+                    shieldTransparency -= 1f * Time.deltaTime;
+                }
+                
+                GetComponent<Renderer>().sharedMaterial.SetFloat("_Alpha", shieldTransparency);
+                break;
+            
+            case GameManager.GameState.dying:
+                DestroyPlayer();
+                break;
         }
-        
-        GetComponent<Renderer>().sharedMaterial.SetFloat("_Alpha", shieldTransparency);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,12 +53,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void DamagePlayer(int damage) 
     {
-        Debug.Log("Player hit for " + damage.ToString() + " damage");
         GameManager.gameManager.playerHealth.DamageUnit(damage);
         damageSound.Play();
 
         if (GameManager.gameManager.playerHealth.Health < 0) {
-            DestroyPlayer();
+            GameManager.currentState = GameManager.GameState.dying;
         } else {
             SetHealthTextValue();
         }
@@ -72,8 +72,13 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
     private void DestroyPlayer() {
+        GameObject playerExplostion = Instantiate(deathExplosion);
+        playerExplostion.transform.position = transform.position;
+        playerExplostion.GetComponent<ParticleSystem>().Play();
+        Destroy(playerExplostion, 0.5f);
+        transform.parent.transform.position = new Vector3(0, -200, 0);
         destroySound.Play();
-        Destroy(transform.parent.gameObject, 2f);
+        GameManager.currentState = GameManager.GameState.gameover;
     }
 
     private void SetHealthTextValue()

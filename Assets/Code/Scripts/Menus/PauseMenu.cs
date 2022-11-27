@@ -5,64 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool isPause = false;
-    [SerializeField] GameObject pauseMenuUI;
-    [SerializeField] private GameObject playerUI;
-    [SerializeField] public string mainMenuName;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    private void OnDisable()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButton("Pause") || Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (!isPause)
-            {
-                Pause();
-            }
-            else
-            {
-                Resume();
-            }
-        }
-    }
-
-    public void Resume()
-    {
-        isPause = false;
-        playerUI.SetActive(true);
-        pauseMenuUI.SetActive(false);
+    public void OnResume() {
         Time.timeScale = 1;
-    }
-    
-    void Pause()
-    {
-        isPause = true;
-        playerUI.SetActive(false);
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0;
+        GameManager.currentState = GameManager.GameState.playing;
     }
 
-    public void LoadMenu()
-    {
-        Debug.Log("Load main menu!");
-        Resume();
-        SceneManager.LoadScene(mainMenuName);
+    public void OnQuit() {
+        GameManager.currentState = GameManager.GameState.mainmenu;
+        SceneManager.LoadScene(0);
     }
-    public void Quit()
-    {
-        Debug.Log("Quit!");
-        Application.Quit();
-    }
-
 }

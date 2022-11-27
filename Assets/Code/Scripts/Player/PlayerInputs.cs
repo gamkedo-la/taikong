@@ -25,6 +25,13 @@ public class PlayerInputs : MonoBehaviour
     [SerializeField] float boostCameraPosition;
     [SerializeField] float cameraPanSpeed;
 
+    [Header("Pause Menu")]
+    [SerializeField] GameObject pauseMenu;
+
+    [Header("Player Information")]
+    public bool shipBoosting;
+    public Vector3 crosshairWorldPos;
+
     private Transform shipModel;
     private Transform laserL;
     private Transform laserR;
@@ -32,9 +39,6 @@ public class PlayerInputs : MonoBehaviour
     private Transform crosshair;
     private Vector2 movementDirection;
     private Vector2 aimingDirection;
-
-    public bool shipBoosting;
-    public Vector3 crosshairWorldPos;
 
 
     void Start() {
@@ -44,14 +48,21 @@ public class PlayerInputs : MonoBehaviour
         laserL = GameObject.Find("Laser_L").transform;
         laserR = GameObject.Find("Laser_R").transform;
         crosshair = GameObject.Find("Crosshair").transform;
+        pauseMenu.SetActive(false);
     }
 
     void FixedUpdate() 
     {
-        ShipMovement();
-        CrosshairMovement();
-        PointShipAtCrosshair();
-        SetCameraPosition();
+        switch (GameManager.currentState) {
+            case GameManager.GameState.playing:
+                pauseMenu.SetActive(false);
+                ShipMovement();
+                CrosshairMovement();
+                PointShipAtCrosshair();
+                SetCameraPosition();
+                break;
+        }
+        
     }
 
     void ShipMovement() {
@@ -110,12 +121,6 @@ public class PlayerInputs : MonoBehaviour
     
     public void OnFire(InputValue value)
     {
-        // RaycastHit hit;
-        
-        // if (Physics.Raycast(shipModel.position, shipModel.TransformDirection(Vector3.forward), out hit)) {
-            
-        // }
-
         Instantiate(laserPrefab, laserL.position, shipModel.transform.rotation);
         Instantiate(laserPrefab, laserR.position, shipModel.transform.rotation);
         laserSfx.Play();
@@ -129,6 +134,19 @@ public class PlayerInputs : MonoBehaviour
 
     public void OnPause(InputValue value)
     {
-        Debug.Log("Pause!");
+        Debug.Log("Pause button");
+        switch(GameManager.currentState) {
+            case GameManager.GameState.playing:
+                pauseMenu.SetActive(true);
+                GameManager.currentState = GameManager.GameState.paused;
+                Time.timeScale = 0;
+                break;
+
+            case GameManager.GameState.paused:
+                pauseMenu.SetActive(false);
+                GameManager.currentState = GameManager.GameState.playing;
+                Time.timeScale = 1;
+                break;
+        }
     }
 }
