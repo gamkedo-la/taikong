@@ -8,6 +8,7 @@ public class Lasers : MonoBehaviour
     public float laserSpeed = 250;
     public float timeToLive = 2f;
     public int laserDamage = 5;
+    public GameObject impactParticle;
 
     void Start() 
     {

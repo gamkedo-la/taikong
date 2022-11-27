@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fda71e302b150522b57db63199ac29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
+  player: {fileID: 0}
   isVisible: 0
 --- !u!223 &4693437944974605438
 Canvas:
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &4693437944974605436
 MonoBehaviour:
   m_ObjectHideFlags: 0
