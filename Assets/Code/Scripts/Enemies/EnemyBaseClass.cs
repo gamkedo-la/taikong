@@ -18,6 +18,7 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
     protected enum Status { Idle, Attacking, Dying }
     protected Status currentStatus = Status.Idle;
     public Transform laserPrefab;
+    public GameObject laserExplosion;
     public float firingRate;
     public int scorePoints;
 
@@ -51,6 +52,8 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
         if(other.CompareTag("PlayerLaser")) {
             damageSound.Play();
             health.DamageUnit(other.GetComponent<Lasers>().laserDamage);
+            GameObject sparks = Instantiate(laserExplosion, transform);
+            Destroy(sparks, 1f);
             if (health.Health <= 0) {
                 currentStatus = Status.Dying;
             }

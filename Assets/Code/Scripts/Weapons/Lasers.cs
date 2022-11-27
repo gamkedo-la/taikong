@@ -8,7 +8,6 @@ public class Lasers : MonoBehaviour
     public float laserSpeed = 250;
     public float timeToLive = 2f;
     public int laserDamage = 5;
-    public GameObject impactParticle;
 
     void Start() 
     {
@@ -30,7 +29,7 @@ public class Lasers : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Scenary")) {
+        if (other.CompareTag("Scenary") || other.CompareTag("Enemy")) {
             DestroySelf();
         }
     }

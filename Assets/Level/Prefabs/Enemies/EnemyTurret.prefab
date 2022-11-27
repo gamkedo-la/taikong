@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 1497021158549237325}
   m_Layer: 0
   m_Name: EnemyTurret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -307,6 +307,7 @@ MonoBehaviour:
   weaponLocation: {fileID: 7677618338797279084}
   explosion: {fileID: 3316972640263737637, guid: eb987749b50bff18daae91aa3141cd94, type: 3}
   laserPrefab: {fileID: 8096704640104750848, guid: 473ab0937c8277b71aaaee4620c40bd4, type: 3}
+  laserExplosion: {fileID: 1337627318252056216, guid: 5bb56d9cd9076ef4f8000910fc051961, type: 3}
   firingRate: 0.4
   scorePoints: 100
 --- !u!54 &933533956063783798

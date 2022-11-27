@@ -131,6 +131,7 @@ MonoBehaviour:
   laserSpeed: 200
   timeToLive: 2
   laserDamage: 5
+  impactParticle: {fileID: 1337627318252056216, guid: 5bb56d9cd9076ef4f8000910fc051961, type: 3}
 --- !u!1 &6495078473849792400
 GameObject:
   m_ObjectHideFlags: 0
