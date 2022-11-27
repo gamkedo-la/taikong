@@ -5802,6 +5802,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1148574395549888102}
+  - component: {fileID: 4345687949849716783}
   m_Layer: 0
   m_Name: NextLevelMenu
   m_TagString: Untagged
@@ -5832,6 +5833,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4345687949849716783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183313949054286213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1886f9533bd66ab488a6df16a085c643, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1302240761008536576
 GameObject:
   m_ObjectHideFlags: 0
@@ -13625,9 +13638,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7788608673295782776}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: OnResume
+      - m_Target: {fileID: 4345687949849716783}
+        m_TargetAssemblyTypeName: NextLevelMenu, Assembly-CSharp
+        m_MethodName: OnLevelComplete
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
