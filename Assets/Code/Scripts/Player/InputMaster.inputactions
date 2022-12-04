@@ -15,6 +15,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "FireRelease",
+                    "type": "Button",
+                    "id": "c8166314-0e1c-4b2f-b7c9-c1ff53f2a1b2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Movement",
                     "type": "PassThrough",
                     "id": "89398ae7-feed-4c48-93c3-149c472e1008",
@@ -205,6 +214,28 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "c71f5775-1192-4199-a505-b242d9140b46",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Switch Control Scheme",
+                    "action": "FireRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ba5006b-4a3c-485f-89c5-c59dc66d7545",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "MouseAndKeys",
+                    "action": "FireRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

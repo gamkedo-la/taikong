@@ -47,7 +47,7 @@ public class PlayerInputs : MonoBehaviour
     private Vector2 aimingDirection;
     private float levelDistance;
     private float levelMenuOpacity = 0;
-
+    private bool holdingFire = false;
     
 
 
@@ -61,6 +61,9 @@ public class PlayerInputs : MonoBehaviour
         laserR = GameObject.Find("Laser_R").transform;
         crosshair = GameObject.Find("Crosshair").transform;
         pauseMenu.SetActive(false);
+
+        // Set a fire rate of 0.25 seconds for the main laser
+        InvokeRepeating("FireWeapon", 0, 0.25f);
     }
 
     void FixedUpdate() 
@@ -180,13 +183,25 @@ public class PlayerInputs : MonoBehaviour
     
     public void OnFire(InputValue value)
     {
-        switch(GameManager.currentState) {
-            case GameManager.GameState.playing:
-                Instantiate(laserPrefab, laserL.position, shipModel.transform.rotation);
-                Instantiate(laserPrefab, laserR.position, shipModel.transform.rotation);
-                laserSfx.Play();
-                break; 
+        holdingFire = true;
+    }
+
+    public void OnFireRelease(InputValue value)
+    {
+        holdingFire = false;
+    }
+
+    private void FireWeapon() {
+        if (holdingFire) {
+            switch(GameManager.currentState) {
+                case GameManager.GameState.playing:
+                    Instantiate(laserPrefab, laserL.position, shipModel.transform.rotation);
+                    Instantiate(laserPrefab, laserR.position, shipModel.transform.rotation);
+                    laserSfx.Play();
+                    break; 
+            }
         }
+        
     }
 
     public void OnBoost(InputValue value)
