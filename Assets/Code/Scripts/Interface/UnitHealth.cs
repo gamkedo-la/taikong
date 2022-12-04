@@ -41,12 +41,12 @@ public class UnitHealth
   }
 
   // Methods
-  public void DamageUnit(int damageAmount)
+  public void DamageUnit(float damageAmount)
   {
     _currentHealth -= damageAmount;
   }
 
-  public void HealUnit(int healAmount)
+  public void HealUnit(float healAmount)
   {
     if (_currentHealth < _currentMaxHealth) 
     {

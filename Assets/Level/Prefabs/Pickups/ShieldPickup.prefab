@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: eb57420f99529754c9642bca6512f1ee, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c39e2b2b349bc1aeeb07d55d6cb97961, type: 2}
+      objectReference: {fileID: 2100000, guid: b911d16cabded93448c5d50ecfc4e7c9, type: 2}
     - target: {fileID: 919132149155446097, guid: eb57420f99529754c9642bca6512f1ee, type: 3}
       propertyPath: m_Name
       value: item-pickup-ring

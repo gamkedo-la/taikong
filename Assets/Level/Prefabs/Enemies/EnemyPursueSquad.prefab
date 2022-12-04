@@ -111,8 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cf35cb5f57fcd448a09e2365f17706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToLive: 100
-  startingHeight: 300
+  timeToLive: 80
+  startingHeight: 250
   moveToPositionSpeed: 20
   enemyType: {fileID: 0}
   startPositions: []

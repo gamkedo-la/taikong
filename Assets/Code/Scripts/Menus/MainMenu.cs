@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void ViewCredits() {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(4);
     }
 
     public void ViewSettings()

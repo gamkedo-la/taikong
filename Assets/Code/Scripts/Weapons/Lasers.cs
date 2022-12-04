@@ -7,7 +7,7 @@ public class Lasers : MonoBehaviour
 {
     public float laserSpeed = 250;
     public float timeToLive = 2f;
-    public int laserDamage = 5;
+    public float laserDamage = 5f;
 
     void Start() 
     {

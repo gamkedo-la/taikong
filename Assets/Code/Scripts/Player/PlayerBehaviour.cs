@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -56,7 +57,7 @@ public class PlayerBehaviour : MonoBehaviour
         
     }
 
-    private void DamagePlayer(int damage) 
+    private void DamagePlayer(float damage) 
     {
         GameManager.gameManager.playerHealth.DamageUnit(damage);
         damageSound.Play();
@@ -69,7 +70,7 @@ public class PlayerBehaviour : MonoBehaviour
         
     }
 
-    private void HealPlayer(int healing) 
+    private void HealPlayer(float healing) 
     {
         GameManager.gameManager.playerHealth.HealUnit(healing);
         Debug.Log(GameManager.gameManager.playerHealth.Health);
@@ -84,6 +85,7 @@ public class PlayerBehaviour : MonoBehaviour
         transform.parent.transform.position = new Vector3(0, -200, 0);
         destroySound.Play();
         GameManager.currentState = GameManager.GameState.gameover;
+        SceneManager.LoadScene(3);
     }
 
     private void SetHealthTextValue()
