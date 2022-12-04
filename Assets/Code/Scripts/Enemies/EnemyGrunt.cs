@@ -9,6 +9,7 @@ public class EnemyGrunt : EnemyBaseClass
     [SerializeField] float floatingSpeed;
     Vector3 originalPos;
     float weaponOffset = 3.7f;
+    UnitHealth health = new UnitHealth(30, 30);
     
     private void Start() {
         InvokeRepeating("FireWeapon", 1.0f, firingRate * Random.Range(0.9f, 1.1f));

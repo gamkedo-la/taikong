@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyTurret : EnemyBaseClass
 {  
+    UnitHealth health = new UnitHealth(40, 40);
+    
     private void Update() {
         if (currentStatus == Status.Dying) {
             Debug.Log("Turret destroyed");

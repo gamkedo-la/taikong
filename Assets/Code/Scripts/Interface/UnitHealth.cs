@@ -5,11 +5,11 @@ using UnityEngine;
 public class UnitHealth
 {
   // Fields
-  int _currentHealth;
-  int _currentMaxHealth;
+  float _currentHealth;
+  float _currentMaxHealth;
 
   // Properties
-  public int Health
+  public float Health
   {
     get 
     {
@@ -21,7 +21,7 @@ public class UnitHealth
     }
   }
 
-  public int MaxHealth
+  public float MaxHealth
   {
     get
     {
@@ -34,7 +34,7 @@ public class UnitHealth
   }
 
   // Constructor
-  public UnitHealth(int health, int maxHealth)
+  public UnitHealth(float health, float maxHealth)
   {
     _currentHealth = health;
     _currentMaxHealth = maxHealth;

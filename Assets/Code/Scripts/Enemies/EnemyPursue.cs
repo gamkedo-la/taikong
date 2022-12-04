@@ -40,7 +40,10 @@ public class EnemyPursue : MonoBehaviour
         {
             float newHeight = Mathf.Lerp(currentHeight, 0, 0.5f * Time.fixedDeltaTime);
             shipsContainer.transform.localPosition = new Vector3(0, newHeight, 0);
-            timeToLive -= Time.fixedDeltaTime * 5;
+            
+            if (timeToLive != -1) {
+                timeToLive -= Time.fixedDeltaTime * 5;
+            }
         } 
         else
         {
@@ -48,7 +51,7 @@ public class EnemyPursue : MonoBehaviour
             shipsContainer.transform.localPosition = new Vector3(0, newHeight, 0);
         }
 
-        if (timeToLive <= 0)
+        if (timeToLive <= 0 && timeToLive != -1)
         {
             pursueActive = false;
             Destroy(gameObject, 5f);

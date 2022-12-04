@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
 {
     [SerializeField] protected AudioSource fireWeaponSound;
-    [SerializeField] AudioSource damageSound;
-    [SerializeField] AudioClip destroyedSound;
+    [SerializeField] protected AudioSource damageSound;
+    [SerializeField] protected AudioClip destroyedSound;
     [SerializeField] protected Transform weaponLocation;
     [SerializeField] GameObject explosion;
 
@@ -45,7 +45,6 @@ public class EnemyBaseClass : MonoBehaviour, IEnemyBehaviour
         if(other.CompareTag("PlayerDetect"))
         {
             LockOnPlayer(other.transform);
-            // Debug.Log("Looking at object: " + other.transform.ToString());
         }
 
         // CapsuleCollider is used for enemy hurtboxes
