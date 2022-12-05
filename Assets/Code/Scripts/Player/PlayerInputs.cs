@@ -62,6 +62,11 @@ public class PlayerInputs : MonoBehaviour
         crosshair = GameObject.Find("Crosshair").transform;
         pauseMenu.SetActive(false);
 
+        // Overwrite default sensitivity the the user has adjusted the settings
+        if (PlayerPrefs.HasKey("SENSITIVITY")) {
+            aimSpeed = PlayerPrefs.GetFloat("SENSITIVITY");
+        }
+
         // Set a fire rate of 0.25 seconds for the main laser
         InvokeRepeating("FireWeapon", 0, 0.25f);
     }

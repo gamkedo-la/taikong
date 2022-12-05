@@ -3,11 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using Object = UnityEngine.Object;
 
 public class AudioSettingsManager
 {
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    // [SerializeField] AudioMixer masterMixer;
+    // [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+
     static void OnSceneLoad()
     {
         // On any scene load, set based on saved preferences
@@ -26,14 +29,15 @@ public class AudioSettingsManager
     {
         AudioListener.pause = GetMuted();
         Debug.Log("Applying audio settings");
-        AudioListener.volume = GetVolume();
     }
     // const string MUTEMANAGER_NAME = "MuteManager";
 
-    public static void SaveSettings(bool muted, float volume)
+    public static void SaveSettings(bool muted, float volume, float sfx)
     {
-        PlayerPrefs.SetFloat(VOLUME_KEY, volume);
+        
         PlayerPrefsE.SetBool(MUTED_KEY, muted);
+        PlayerPrefs.SetFloat(VOLUME_KEY, volume);
+        PlayerPrefs.SetFloat(SFX_KEY, volume);
 
         PlayerPrefs.Save();
         
@@ -46,9 +50,17 @@ public class AudioSettingsManager
     private const string VOLUME_KEY = "volume";
     private const float VOLUME_DEFAULT = 1.0f;
 
-    public static float GetVolume()
+    private const string SFX_KEY = "sfx";
+    private const float SFX_DEFAULT = 1.0f;
+
+    public static float GetMusicVolume()
     {
         return PlayerPrefs.GetFloat(VOLUME_KEY, VOLUME_DEFAULT); // 0 to 1.9
+    }
+
+    public static float GetSfxVolume()
+    {
+        return PlayerPrefs.GetFloat(SFX_KEY, SFX_DEFAULT); // 0 to 1.9
     }
 
     public static bool GetMuted()
@@ -56,18 +68,6 @@ public class AudioSettingsManager
         return PlayerPrefsE.GetBool(MUTED_KEY, MUTED_DEFAULT);
     }
 }
-
-
-// public class MuteManager: MonoBehaviour
-// {
-//     private void Update()
-//     {
-//         if (Input.GetKeyDown(KeyCode.M))
-//         {
-//             
-//         }
-//     }
-// }
 
 // We don't have a way to persist booleans, and since PlayerPrefs is all statics, we can't make an extension
 public static class PlayerPrefsE
