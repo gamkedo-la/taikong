@@ -24,8 +24,7 @@ public class EnemyTurret : EnemyBaseClass
     new public void FireWeapon() 
     {
         Vector3 barrelOffset = new Vector3(0, 8.4f, 0);
-
-        if (player != null) {
+        if (currentStatus == Status.Attacking && player != null) {
             fireWeaponSound.Play();
             Transform laser = Instantiate(laserPrefab);
             // Get the position of the canon part of the turret model
