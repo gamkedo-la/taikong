@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
     private UIDocument SettingsUIDocument;
     // private
     public void PlayGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(1);
     }
 
     public void ReturnToMenu() {
@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void ViewCredits() {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(5);
     }
 
     public void ViewSettings()
@@ -35,18 +35,18 @@ public class MainMenu : MonoBehaviour
     }
 
     public void DebugLoadCity() {
-        SceneManager.LoadScene(1);
-    }
-
-    public void DebugLoadMountains() {
         SceneManager.LoadScene(2);
     }
 
-    public void DebugLoadSpace() {
+    public void DebugLoadMountains() {
         SceneManager.LoadScene(3);
     }
 
-    public void DebugLoadTutorial() {
+    public void DebugLoadSpace() {
         SceneManager.LoadScene(4);
+    }
+
+    public void DebugLoadTutorial() {
+        SceneManager.LoadScene(0);
     }
 }

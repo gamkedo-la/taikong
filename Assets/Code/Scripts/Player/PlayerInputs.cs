@@ -168,6 +168,11 @@ public class PlayerInputs : MonoBehaviour
         shipCamera.transform.localPosition = new Vector3(0, 0, currentCameraPosition);
     }
 
+    public void SetupAimSpeed()
+    {
+        aimSpeed = PlayerPrefs.GetFloat("SENSITIVITY");
+    }
+
     public void OnMovement(InputValue value)
     {
         switch(GameManager.currentState) {

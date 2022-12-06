@@ -8,7 +8,7 @@
             <ui:Toggle label="Mute" name="MuteCheckbox" style="flex-grow: 1;" />
             <ui:Slider picking-mode="Ignore" label="Music Volume" value="0.8" high-value="1" name="VolumeSlider" direction="Horizontal" low-value="0" style="flex-grow: 1;" />
             <ui:Slider picking-mode="Ignore" label="Sound Effects" value="0.8" high-value="1" name="SFXSlider" direction="Horizontal" low-value="0" style="flex-grow: 1;" />
-            <ui:Slider picking-mode="Ignore" label="Aim Sensitivity" value="500" high-value="1000" name="ControlSensitivity" direction="Horizontal" low-value="100" style="flex-grow: 1;" />
+            <ui:Slider picking-mode="Ignore" label="Aim Sensitivity" value="100" high-value="1000" name="ControlSensitivity" direction="Horizontal" low-value="1" style="flex-grow: 1;" />
             <ui:GroupBox style="flex-grow: 1;" />
             <ui:Button text="Save" name="SaveButton" />
         </ui:GroupBox>
