@@ -5203,7 +5203,7 @@ MonoBehaviour:
   laserPrefab: {fileID: 6495078473849792400, guid: 2b97ab49e84d916ca9183d2349a9e594, type: 3}
   laserSfx: {fileID: 1883615884233947847}
   shipSpeed: 75
-  aimSpeed: 750
+  aimSpeed: 150
   flightSpeedNormal: 20
   flightSpeedBoost: 30
   shipBoosting: 0
