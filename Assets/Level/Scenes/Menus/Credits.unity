@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &246665338
 RectTransform:
   m_ObjectHideFlags: 0
@@ -222,7 +222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &344311857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1215,8 +1215,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -96}
-  m_SizeDelta: {x: -100, y: -274.84}
+  m_AnchoredPosition: {x: 0, y: -54.52}
+  m_SizeDelta: {x: -100, y: -301.8001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1989484761
 MonoBehaviour:
@@ -1242,37 +1242,42 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: d5258c7736a1cded49acb090aed154fd, type: 3}
     m_FontSize: 22
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 78
-    m_Alignment: 3
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.1
-  m_Text: 'Development Team:
+  m_Text: '-Jared Rigby: Project lead, core gameplay, level design, enemy AI, player
+    movement, camera system, controller support, title screen, modeling (small enemy
+    ship, player ship, apartment, gunship, pickups), UI, hit sound, lasers, shield
+    animation, explosions, texturing, post processing, level transitions, help screen
 
-    Colton Henderson - Player and enemy health systems,
-    enemy laser collision system
+    -Colton
+    Henderson: Base enemy, player health system, attack functionality, enemy shot
+    collision, pause menu
 
-    Rodrigo Bonzerr Lopez - Boss music composition,
-    3D modelling of trees
+    -Christer "McFunkypants" Kaitila: Main gameplay music,
+    ground turret model, skyline generation, tunnel, concrete, additional obstacle
+    placement
 
-    Chris DeLeon - Score system programming, item pickup
-    sound effects
+    -Rodrigo Bonzerr Lopez: Final boss music, trees models with variations
 
-    Christer Kaitila - Enemy turret design, main level music composition,
-    skyline and obstacle 3D modelling
+    -Fahad
+    Muntaz: Main menu music, boost sound effect
 
-    Mike DiGiovanni - Collision code refactoring,
-    settings page UI design, audio manager code
+    -mike dg: Settings Menu, code
+    tag comparison optimization
 
-    Fahad Muntaz - Main menu music,
-    ship booster sound effects
+    -Chris DeLeon: Pickup sound effects, scorekeeper
+    system
 
-    Tyler Funk - Keyboard and mouse control programming
-    support'
+    -Tyler Funk: Mouse aim
+
+    -Patrick Moffett: Playtesting'
 --- !u!222 &1989484762
 CanvasRenderer:
   m_ObjectHideFlags: 0
