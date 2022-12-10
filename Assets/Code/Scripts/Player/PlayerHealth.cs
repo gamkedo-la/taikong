@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
+        GameManager.gameManager.playerHealth.Health = PlayerPrefs.GetFloat("CURRENT_HEALTH");
         SetHealthTextValue();
     }
 
@@ -22,8 +23,9 @@ public class PlayerHealth : MonoBehaviour
                 GameManager.gameManager.playerHealth.MaxHealth);
 
             SetHealthTextValue();
+            PlayerPrefs.SetFloat("CURRENT_HEALTH", GameManager.gameManager.playerHealth.Health);
 
-            Debug.Log("Current health of : " + unit.gameObject.name + " is " + GameManager.gameManager.playerHealth.Health);
+            // Debug.Log("Current health of : " + unit.gameObject.name + " is " + GameManager.gameManager.playerHealth.Health);
         }
     }
     private void SetHealthTextValue()

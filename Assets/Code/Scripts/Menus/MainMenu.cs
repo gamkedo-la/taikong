@@ -11,6 +11,8 @@ public class MainMenu : MonoBehaviour
     // private
     public void PlayGame() {
         SceneManager.LoadScene(1);
+        // Reset the player's health to 100 when starting a new game
+        PlayerPrefs.SetFloat("CURRENT_HEALTH", 100f);
     }
 
     public void ReturnToMenu() {
