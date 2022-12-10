@@ -20,8 +20,8 @@ public class ScoreKeeper : MonoBehaviour
 
     private void Start() {
         activeScene = SceneManager.GetActiveScene();
-        Debug.Log(activeScene);
-        if (activeScene.buildIndex == 1) {
+        // If the player loads the first level, reset the score
+        if (activeScene.buildIndex == 2) {
             ResetScore();
         } else {
             scoreNow = PlayerPrefs.GetInt("playerscore");

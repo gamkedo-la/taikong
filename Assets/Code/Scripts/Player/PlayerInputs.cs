@@ -216,12 +216,12 @@ public class PlayerInputs : MonoBehaviour
 
     public void OnBoost(InputValue value)
     {
-        switch(GameManager.currentState) {
-            case GameManager.GameState.playing:
-            if (!shipBoosting && boostFuel > 0)
-                shipBoosting = true;
-            break;
-        }
+        // switch(GameManager.currentState) {
+        //     case GameManager.GameState.playing:
+        //     if (!shipBoosting && boostFuel > 0)
+        //         shipBoosting = true;
+        //     break;
+        // }
     }
 
     public void OnPause(InputValue value)

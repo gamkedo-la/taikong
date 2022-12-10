@@ -19,7 +19,7 @@ public class NextLevelMenu : MonoBehaviour
         if (activeScene.buildIndex < 2) {
             SceneManager.LoadScene(activeScene.buildIndex + 1);
         } else {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(4);
         }
     }
 }

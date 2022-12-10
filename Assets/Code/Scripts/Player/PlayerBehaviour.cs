@@ -85,7 +85,13 @@ public class PlayerBehaviour : MonoBehaviour
         transform.parent.transform.position = new Vector3(0, -200, 0);
         destroySound.Play();
         GameManager.currentState = GameManager.GameState.gameover;
-        SceneManager.LoadScene(3);
+        StartCoroutine(LoadGameOver(5f));
+        SceneManager.LoadScene(4);
+    }
+
+    IEnumerator LoadGameOver(float delay) {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(4);
     }
 
     private void SetHealthTextValue()
