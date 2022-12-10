@@ -59,7 +59,7 @@ public class EnemyBoss : EnemyBaseClass
         }
     }
 
-    public void FireWeapon() 
+    new public void FireWeapon() 
     {
         activeWeapon += 1;
         activeWeapon = activeWeapon % 4;
