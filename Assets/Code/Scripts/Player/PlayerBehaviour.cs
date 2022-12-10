@@ -86,7 +86,6 @@ public class PlayerBehaviour : MonoBehaviour
         destroySound.Play();
         GameManager.currentState = GameManager.GameState.gameover;
         StartCoroutine(LoadGameOver(5f));
-        SceneManager.LoadScene(4);
     }
 
     IEnumerator LoadGameOver(float delay) {
