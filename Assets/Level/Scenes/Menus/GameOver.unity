@@ -1244,9 +1244,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1843986007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 121485371ec435dc5b886f6314d94785, type: 3}
+  m_Script: {fileID: 11500000, guid: d8a789d3ee62a864096f1c11c64fc667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreTextbox: {fileID: 1182164322}
+  clipboardPrompt: {fileID: 44836639}
 --- !u!114 &1843986009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,7 +1343,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -5646033533042372696, guid: 101f143ae0a8531458e2a4f547544f0f, type: 2}
   m_audioClip: {fileID: 8300000, guid: 90bc4cc7d488a3a4bb9341173adbc09c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 1
   Mute: 0

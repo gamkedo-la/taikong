@@ -148,6 +148,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Debugger
       objectReference: {fileID: 0}
+    - target: {fileID: 4693437944974605437, guid: 15da2f32ea5d1c243b99ee098c003f24, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4693437944974605439, guid: 15da2f32ea5d1c243b99ee098c003f24, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1

@@ -785,19 +785,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7721905736558313880, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9968678
+      value: 0.9965719
       objectReference: {fileID: 0}
     - target: {fileID: 7721905736558313880, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.059289813
+      value: 0.06407077
       objectReference: {fileID: 0}
     - target: {fileID: 7721905736558313880, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.05224686
+      value: -0.052231357
       objectReference: {fileID: 0}
     - target: {fileID: 7721905736558313880, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0031074395
+      value: 0.0033580144
       objectReference: {fileID: 0}
     - target: {fileID: 7721905736558313880, guid: 8d7eefc96d4bda8bfbdedf554d09892e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4900,6 +4900,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3a9513b43571dd4390c14f2b1b1852f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelMusic: {fileID: 747538893}
+  bossMusic: {fileID: 747538895}
+  player: {fileID: 962821255}
 --- !u!82 &747538895
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9965,7 +9968,7 @@ MonoBehaviour:
     roll: 0
   - position: {x: 824.83044, y: -14.765903, z: -63.745647}
     roll: 0
-  - position: {x: 1141.2451, y: -32.794388, z: -117.71882}
+  - position: {x: 1141.2451, y: 27.81771, z: -117.71882}
     roll: 0
   - position: {x: 1293.0613, y: 34.798676, z: -1189.0269}
     roll: 0
